@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>CEEVUE — Responsive HTML Deck (Desktop Fidelity v23)</title>
+<style>
+:root{
+  --black:#020202; --ink:#111; --white:#fff; --muted:#6f6f6f; --soft:#f3f4f5; --line:#d9dde2; --blue:#111; --cyan:#111; --accent:#111; --vvh:1vh; --font:"Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;font-family:var(--font);background:#000;color:#fff;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;overflow:hidden}.deck{height:calc(var(--vvh)*100);overflow-y:auto;overflow-x:hidden;scroll-snap-type:y mandatory;scroll-behavior:smooth;background:#000}.slide{position:relative;width:100vw;height:calc(var(--vvh)*100);scroll-snap-align:start;scroll-snap-stop:always;overflow:hidden;background:#000}.stage{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(100vw,177.7778vh);height:min(56.25vw,100vh);background:#fff;color:#111;overflow:hidden}.stage.dark{background:#000;color:#fff}.stage .abs{position:absolute}.media-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.media-contain{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}.shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.65),rgba(0,0,0,.18),rgba(0,0,0,.68))}.stage .logo-img{position:absolute;left:3.2%;top:3.6%;width:13.2%;height:auto}.ceevue-word{font-weight:800;letter-spacing:.06em;font-size:clamp(14px,1.1vw,22px);color:#fff}.desktop-title{font-size:4.1vw;line-height:.96;font-weight:900;letter-spacing:-.055em}.desktop-kicker{font-size:1.05vw;letter-spacing:.26em;text-transform:uppercase;font-weight:800}.desktop-sub{font-size:1.25vw;line-height:1.24}.white-card{background:#fff;border:1px solid #e3e5e7;color:#111}.black-card{background:#0b0d10;border:1px solid rgba(255,255,255,.15);color:#fff}.faint{color:#8d9299}.blue{color:var(--blue)}.num{position:absolute;right:2.5%;bottom:2.1%;font-size:1.35vw;color:#b9b9b9;font-weight:700}.desktop-art{display:block;width:100%;height:100%;object-fit:fill;background:#000}.stage.fidelity{line-height:0;background:#000;color:#fff}.desktop-only{display:block}.mobile{display:none}.grid{display:grid}.row{display:flex}.center{display:flex;align-items:center;justify-content:center}.pill{display:inline-flex;align-items:center;border:1px solid currentColor;border-radius:999px;padding:.55em 1.1em;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.muted{color:#757575}.big-metric{font-size:5.4vw;line-height:.86;font-weight:900;letter-spacing:-.06em}.small-note{font-size:.8vw;color:#777}.pager{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:40;display:flex;align-items:center;gap:10px;background:rgba(0,0,0,.55);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:8px 14px;color:#fff;font:700 14px/1 var(--font)}.pager button{width:32px;height:32px;border-radius:50%;border:0;background:rgba(255,255,255,.16);color:#fff;font-size:20px;cursor:pointer}.pager span{min-width:64px;text-align:center}.slide.light .pager{color:#fff}.edit-hook{outline:0}.ci,.tlt,.tlb,.uct,.ucb,.cbi,.fn,.agd,.sn,.sl{min-height:1px}
+
+/* desktop slide-specific */
+.s1 .hero-logo{position:absolute;left:50%;top:41%;transform:translate(-50%,-50%);width:35%}.s1 .hero-title{position:absolute;left:50%;top:57%;transform:translateX(-50%);font-size:2.15vw;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:#fff;white-space:nowrap}.s2 .top-video,.s3 .top-video{position:absolute;left:0;top:0;width:100%;height:47%;overflow:hidden}.s2 .title-band,.s3 .title-band{position:absolute;left:0;top:0;width:100%;height:40%;background:rgba(0,0,0,.68)}.s2 h1,.s3 h1{position:absolute;left:5%;right:5%;top:15%;font-size:3.3vw;letter-spacing:.1em;text-transform:uppercase;text-align:center;color:#fff;margin:0}.s2 .issue-grid{position:absolute;left:4.2%;right:4.2%;bottom:10%;display:grid;grid-template-columns:repeat(4,1fr);gap:2.2%}.s2 .issue{height:18vw;padding:2vw 1.5vw;text-align:center;border:1px solid #d8d8d8;background:#fff;color:#111}.s2 .issue img{height:3.4vw;width:auto;object-fit:contain;margin-bottom:1.1vw}.s2 .issue h3{font-size:1.45vw;line-height:1.1;margin:0;font-weight:800}.s3 .half{position:absolute;left:0;right:0;bottom:0;height:50%;background:#fff;color:#111}.s3 .caption{position:absolute;left:6%;right:6%;bottom:10%;font-size:1.4vw;line-height:1.35;text-align:center;color:#111}.feature .topbar,.feature .bottombar{position:absolute;left:0;right:0;height:12.2%;background:#fff;z-index:3}.feature .topbar{top:0}.feature .bottombar{bottom:0}.feature .feature-wrap{position:absolute;left:0;right:0;top:12.2%;bottom:12.2%;display:grid;grid-template-columns:1fr 1fr;background:#000}.feature .feature-copy{position:absolute;left:4.5%;right:4.5%;bottom:2.6%;z-index:4;text-align:center;font-size:1.22vw;line-height:1.35;color:#111}.feature .patent{position:absolute;left:3%;bottom:1.7%;z-index:4;font-size:.95vw;color:#555}.feature .media-box{position:relative;overflow:hidden;background:#000}.feature .media-box video,.feature .media-box img{width:100%;height:100%;object-fit:cover}.s9 .quad{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}.s9 .quad-item{position:relative;overflow:hidden}.s9 .quad-item video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.s9 .quad-item::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.35)}.s9 .quad-title{position:absolute;z-index:2;left:5%;bottom:9%;font-size:1.5vw;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#fff}.s9 .mainline{position:absolute;left:0;right:0;top:9%;text-align:center;font-size:2.4vw;font-weight:900;color:#fff;z-index:3}.s10 .circle{position:absolute;border-radius:50%;background:#101010;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;box-shadow:0 0 0 1px rgba(255,255,255,.08)}.s10 .circle.big{right:7%;top:-17%;width:42%;height:75%;background:#111}.s10 .circle.mid{right:22%;top:28%;width:31%;height:55%;background:#222}.s10 .circle.small{right:31%;bottom:8%;width:15%;height:27%;background:#000}.s10 .circle b{font-size:3.6vw;display:block}.s10 .circle span{font-size:1.2vw}.s10 .copy1{left:4%;top:12%;width:39%;font-size:1.3vw;line-height:1.35}.s10 .copy2{left:5%;bottom:12%;width:57%;font-size:1.55vw;line-height:1.35}.s11 .comp-table{position:absolute;left:3%;right:3%;top:28%;bottom:6%;display:grid;grid-template-columns:1.4fr repeat(8,1fr);grid-auto-rows:1fr;border-top:1px solid #ccc;border-left:1px solid #ddd;font-size:.62vw}.s11 .comp-table div{border-right:1px solid #ddd;border-bottom:1px solid #ddd;padding:.45vw;display:flex;align-items:center;justify-content:center;text-align:center}.s11 .comp-table .rowhead{justify-content:flex-start;font-weight:800;background:#f2f4f6}.s11 .comp-table .ceevue{background:#eaf6ff;font-weight:800}.s12 .pricing{position:absolute;left:5%;right:5%;top:30%;display:grid;grid-template-columns:repeat(3,1fr);gap:2vw}.s12 .price-card{border:1px solid #ddd;padding:2vw;background:#fff;min-height:18vw}.s12 .price-card h3{font-size:1.4vw;text-transform:uppercase;letter-spacing:.18em}.s12 .price-card .amount{font-size:3.8vw;font-weight:900}.s12 .unlock{position:absolute;left:5%;right:5%;bottom:9%;display:grid;grid-template-columns:repeat(3,1fr);gap:2vw}.s13 .gtm{position:absolute;left:4%;right:4%;top:27%;bottom:10%;display:grid;grid-template-columns:repeat(3,1fr);gap:2vw}.s13 .gtm-card{border:1px solid #dedede;background:#fff;padding:1.8vw;display:flex;flex-direction:column;gap:1vw}.s13 .gtm-card h3{font-size:1.5vw;text-align:center}.s13 .gtm-card p{font-size:1vw;line-height:1.25}.s13 .gtm-card .logos{display:flex;gap:.8vw;align-items:center;justify-content:center;margin-top:auto}.s13 .gtm-card img{max-height:3.6vw;max-width:40%;object-fit:contain}.s14 .timeline{position:absolute;left:4%;right:4%;top:47%;height:1px;background:#111}.s14 .mile{position:absolute;top:52%;width:17%;font-size:1vw;line-height:1.25}.s14 .mile::before{content:"";position:absolute;left:50%;top:-1.5vw;height:1.5vw;border-left:1px solid #111}.s14 .mile.up{top:30%}.s14 .mile.up::before{top:auto;bottom:-1.5vw}.s14 .mile h3{font-size:1.2vw;margin:0 0 .5vw}.s15 .fund-grid{position:absolute;left:37%;right:5%;top:25%;bottom:17%;display:grid;grid-template-columns:repeat(3,1fr);gap:1vw}.s15 .fund{background:#f3f5f7;border:1px solid #e5e5e5;padding:1.3vw}.s15 .fund .pct{font-size:3vw;font-weight:900}.s15 .raise{position:absolute;left:4%;top:22%;width:30%;height:24%;background:#111;color:#fff;padding:2vw}.s15 .objectives{position:absolute;left:4%;bottom:22%;width:30%;height:25%;background:#f1f3f5;padding:1.4vw}.s16 .chart-img{position:absolute;left:3%;top:22%;width:55%;height:36%;object-fit:contain}.s16 .bars{position:absolute;right:5%;top:24%;width:38%;height:66%;display:flex;align-items:end;gap:1.3vw;border-bottom:1px solid #ddd}.s16 .bar{flex:1;background:#dbe7f2;position:relative}.s16 .bar span{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);font-weight:800}.s16 .bar b{position:absolute;top:calc(100% + .5vw);left:50%;transform:translateX(-50%);font-size:.9vw}.s17 .exit-media{position:absolute;right:0;top:0;width:64%;height:100%;overflow:hidden}.s17 .exit-copy{position:absolute;left:4%;top:11%;width:35%;font-size:1.55vw;line-height:1.35}.s17 .logo-cloud{position:absolute;left:3%;bottom:8%;width:36%;display:grid;grid-template-columns:repeat(3,1fr);gap:1vw}.s17 .logo-cloud img{width:100%;height:3.8vw;object-fit:contain;background:#fff;border:1px solid #eee;padding:.5vw}.s18 .team-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.s18 .team-card{position:absolute;left:6%;right:6%;bottom:9%;background:rgba(0,0,0,.75);color:#fff;padding:2vw}.s18 .team-card p{font-size:1.5vw;line-height:1.35}.s19 .close-logo{position:absolute;left:50%;top:43%;transform:translate(-50%,-50%);width:38%}.s19 .contact{position:absolute;left:0;right:0;bottom:6%;font-size:1.2vw;text-align:center;color:#111}.s19 .title{position:absolute;left:50%;top:62%;transform:translateX(-50%);font-size:2.1vw;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:#111}
+
+/* mobile */
+@media (max-width:860px) and (orientation:portrait){
+  body{background:#000}.desktop-only,.stage{display:none}.mobile{display:flex;position:absolute;inset:0;flex-direction:column;overflow:hidden;padding:calc(env(safe-area-inset-top,0px) + 18px) 22px calc(env(safe-area-inset-bottom,0px) + 72px);background:#08090b;color:#fff}.mobile.light{background:#fff;color:#111}.mobile.scroll{overflow-y:auto}.m-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.45) blur(0px);z-index:0}.m-bg.soft{filter:brightness(.65) blur(0px)}.m-bg.blur{filter:brightness(.38) blur(5px);transform:scale(1.03)}.m-bg-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.18) 30%,rgba(0,0,0,.06) 52%,rgba(0,0,0,.10) 70%,rgba(0,0,0,.42) 100%);z-index:1}
+.m-content.top::before,.m-content.bottom::before{content:"";position:absolute;left:-24px;right:-24px;top:-20px;bottom:-20px;background:radial-gradient(120% 100% at 30% 40%,rgba(0,0,0,.55) 0%,rgba(0,0,0,.32) 45%,rgba(0,0,0,0) 80%);z-index:-1;pointer-events:none}.mobile>*:not(.m-bg):not(.m-bg-overlay){position:relative;z-index:2}.m-top{display:flex;align-items:center;justify-content:space-between;font-weight:800;font-size:13px;letter-spacing:.04em;color:rgba(255,255,255,.78);text-transform:uppercase}.light .m-top{color:#111}.m-top span:last-child{color:rgba(255,255,255,.45)}.light .m-top span:last-child{color:#aaa}.m-logo{height:22px;object-fit:contain;filter:brightness(1.2)}.m-content{margin-top:auto;margin-bottom:auto;position:relative}.m-content.top{margin-top:6vh;margin-bottom:0}.m-content.bottom{margin-top:auto;margin-bottom:6vh}.m-kicker{font-size:14px;line-height:1;text-transform:uppercase;letter-spacing:.24em;color:var(--cyan);font-weight:900;margin:0 0 14px}.light .m-kicker{color:var(--blue)}.m-title{font-size:clamp(42px,13.5vw,68px);line-height:.9;font-weight:900;letter-spacing:-.075em;margin:0}.m-title.small{font-size:clamp(34px,10.8vw,52px)}.m-title.medium{font-size:clamp(38px,12vw,58px)}.m-title .blue{color:var(--cyan)}.m-sub{font-size:clamp(18px,5.4vw,28px);line-height:1.2;color:#c9cdd2;margin:18px 0 0;letter-spacing:-.03em}.light .m-sub{color:#575b60}.m-chip-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}.m-chip{border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:8px 12px;text-transform:uppercase;font-size:11px;font-weight:800;letter-spacing:.08em;color:#fff}.light .m-chip{border-color:#ddd;color:#111}.m-card-grid{display:grid;gap:12px;margin-top:24px}.m-card-grid.two{grid-template-columns:1fr 1fr}.m-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);padding:16px}.light .m-card{background:#f5f6f7;border-color:#e2e5e8;color:#111}.m-card h3{font-size:22px;line-height:1.04;margin:0 0 6px;font-weight:900;letter-spacing:-.04em}.m-card p{font-size:16px;line-height:1.22;color:#c9cdd2;margin:0}.light .m-card p{color:#60656b}.m-card .metric{font-size:42px;font-weight:900;letter-spacing:-.06em;color:var(--cyan);line-height:.9;margin-bottom:8px}.light .m-card .metric{color:var(--blue)}.m-issue{display:flex;gap:14px;align-items:flex-start;border-top:1px solid rgba(255,255,255,.18);padding-top:14px}.m-issue .num-round{width:38px;height:38px;border:1px solid var(--cyan);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--cyan);font-weight:900;flex:0 0 auto}.m-issue h3{font-size:21px;margin:0 0 4px;font-weight:900}.m-issue p{font-size:16px;color:#c9cdd2;margin:0;line-height:1.22}.m-product-img{width:100%;max-height:42vh;object-fit:contain;margin:20px 0}.m-video-card{position:relative;height:44vh;border:1px solid rgba(255,255,255,.18);overflow:hidden;margin:24px 0 0}.m-video-card video,.m-video-card img{width:100%;height:100%;object-fit:cover}.m-video-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,.65))}.m-video-card b{position:absolute;left:18px;bottom:18px;z-index:2;font-size:18px}.m-mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}.m-mini{min-height:132px;background:#111;border:1px solid rgba(255,255,255,.16);padding:14px}.m-mini img{width:100%;height:58px;object-fit:contain;margin-bottom:12px}.m-mini h3{font-size:18px;margin:0 0 6px}.m-table{display:grid;gap:8px;margin-top:18px}.m-table-row{display:grid;grid-template-columns:1.2fr 1fr;gap:8px;border-top:1px solid rgba(255,255,255,.18);padding:10px 0}.m-table-row b{font-size:15px}.m-table-row span{font-size:15px;color:#c9cdd2}.m-timeline{display:grid;gap:12px;margin-top:22px}.m-timeline .step{border-left:3px solid var(--cyan);padding:10px 0 10px 14px;background:rgba(255,255,255,.04)}.m-timeline .step b{font-size:13px;color:var(--cyan);text-transform:uppercase;letter-spacing:.18em}.m-timeline .step h3{font-size:22px;margin:6px 0;font-weight:900}.m-timeline .step p{font-size:16px;color:#c9cdd2;margin:0;line-height:1.25}.m-pricing{display:grid;grid-template-columns:1fr;gap:12px;margin-top:20px}.m-price{padding:16px;border:1px solid rgba(255,255,255,.18);background:#121417}.m-price b{font-size:13px;color:var(--cyan);text-transform:uppercase;letter-spacing:.18em}.m-price .amount{font-size:42px;font-weight:900;margin:6px 0}.m-footer-note{font-size:13px;color:#9ca3af;margin-top:16px;line-height:1.25}.pager{bottom:12px}.pager button{width:34px;height:34px}.slide{height:calc(var(--vvh)*100);min-height:calc(var(--vvh)*100)}
+}
+@media (max-width:390px) and (orientation:portrait){.mobile{padding-left:18px;padding-right:18px}.m-title{font-size:clamp(38px,12.5vw,58px)}.m-title.small{font-size:clamp(31px,10vw,48px)}.m-sub{font-size:17px}.m-card h3{font-size:19px}.m-card p{font-size:14px}.m-card .metric{font-size:34px}.m-mini{min-height:116px;padding:12px}}
+
+/* v3 desktop fidelity: PPTX-derived slide renders; mobile layout unchanged */
+@media (min-width:861px), (orientation:landscape){
+  html,body{background:#000!important;}
+  .deck,.slide{background:#000!important;}
+  .stage.fidelity{background:#000!important;line-height:0!important;box-shadow:none!important;border:0!important;}
+  .stage.fidelity .desktop-art{width:100%!important;height:100%!important;object-fit:fill!important;display:block!important;margin:0!important;border:0!important;}
+}
+
+/* v5 desktop fidelity pass: desktop uses the authoritative 16:9 slide render.
+   This removes reconstructed overlays/oversized HTML text from the desktop layer while preserving mobile articles and editor hooks. */
+@media (min-width:861px), (orientation:landscape){
+  .stage.fidelity.desktop-only{background:#000!important;color:#fff!important;line-height:0!important;overflow:hidden!important;}
+  .stage.fidelity.desktop-only .desktop-art{display:block!important;width:100%!important;height:100%!important;object-fit:fill!important;background:#000!important;}
+}
+
+/* v10: desktop uses authoritative deck captures for exact visual layer, font weights, bold runs, and deck geometry. */
+.stage.pptx-render{background:#000;line-height:0}.stage.pptx-render .desktop-art{width:100%;height:100%;object-fit:fill;display:block}
+</style>
+<style id="desktop-fidelity-v2-patch">
+@media (min-width:861px), (orientation:landscape){
+  html,body,.deck,.slide,.stage,.desktop-only{background:#000!important;overflow:hidden;}
+  .stage.fidelity{background:#000!important;box-shadow:none!important;border:0!important;}
+  .stage.fidelity .desktop-art{display:block;width:100%;height:100%;object-fit:fill;background:#000;border:0!important;box-shadow:none!important;}
+  body::after{content:"";position:fixed;left:0;right:0;bottom:0;height:10px;background:#000;z-index:999999;pointer-events:none;}
+}
+
+
+/* v4 desktop precision patch -------------------------------------------------
+   Do not reflow the good fidelity slides. Only problem desktop slides are
+   switched back to handcrafted layers where the PPTX render enlarged/overlaid
+   text or exposed unwanted translucent media bands.
+---------------------------------------------------------------------------- */
+@media (min-width:861px), (orientation:landscape){
+  .s2 .stage:not(.fidelity),
+  .s3 .stage:not(.fidelity){background:#fff;color:#111;}
+  .s2 .stage:not(.fidelity) .top-video,
+  .s3 .stage:not(.fidelity) .top-video{position:absolute;left:0;top:0;width:100%;height:47%;overflow:hidden;background:#111;}
+  .s2 .stage:not(.fidelity) .title-band,
+  .s3 .stage:not(.fidelity) .title-band{position:absolute;left:0;top:0;width:100%;height:43%;background:rgba(0,0,0,.66);z-index:2;}
+  .s2 .stage:not(.fidelity) .logo-img,
+  .s3 .stage:not(.fidelity) .logo-img{z-index:3;left:5%;top:12%;width:12.5%;}
+  .s2 .stage:not(.fidelity) h1,
+  .s3 .stage:not(.fidelity) h1{position:absolute;z-index:3;left:7%;right:7%;top:21%;margin:0;color:#fff;text-align:center;font-weight:700;letter-spacing:.145em;text-transform:uppercase;font-size:3.05vw;line-height:1.23;}
+  .s2 .stage:not(.fidelity) .issue-grid{position:absolute;left:4.2%;right:4.2%;bottom:9.4%;display:grid;grid-template-columns:repeat(4,1fr);gap:2.1%;z-index:4;}
+  .s2 .stage:not(.fidelity) .issue{height:18vw;padding:2.35vw 1.5vw;text-align:center;border:1px solid #d8d8d8;background:#fff;color:#111;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;}
+  .s2 .stage:not(.fidelity) .issue img{height:3.5vw;width:auto;object-fit:contain;margin:0 0 1.6vw;}
+  .s2 .stage:not(.fidelity) .issue h3{font-size:1.42vw;line-height:1.06;margin:0;font-weight:800;letter-spacing:-.02em;}
+  .s3 .stage:not(.fidelity) .half{position:absolute;left:0;right:0;bottom:0;height:50%;background:#fff;color:#111;z-index:1;}
+  .s3 .stage:not(.fidelity) .caption{position:absolute;z-index:4;left:7%;right:7%;bottom:12%;font-size:1.30vw;line-height:1.35;text-align:center;color:#111;margin:0;font-weight:400;letter-spacing:-.015em;}
+  .s18 .stage:not(.fidelity){background:#000;color:#fff;}
+  .s18 .stage:not(.fidelity) .team-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .s18 .stage:not(.fidelity) .shade{display:none!important;}
+  .s18 .stage:not(.fidelity) .logo-img{display:none!important;}
+  .s18 .stage:not(.fidelity) .team-card{position:absolute;left:7.5%;right:7.5%;bottom:15.5%;background:transparent;color:#fff;padding:0;z-index:4;text-align:left;}
+  .s18 .stage:not(.fidelity) .team-card p{margin:0;font-size:1.38vw;line-height:1.30;font-weight:400;letter-spacing:-.015em;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.85);}
+  .desktop-fix-s15-pie{position:absolute;left:54.4%;top:42.3%;width:18.4vw;height:18.4vw;border-radius:50%;background:conic-gradient(from -90deg,#000 0 55%,#4c4c4c 55% 82%,#a5a5a5 82% 100%);z-index:5;line-height:1;box-shadow:0 0 0 1px rgba(0,0,0,.03);}
+  .desktop-fix-s15-pie .pie-slice-label{position:absolute;font-weight:800;font-size:1.95vw;letter-spacing:-.035em;line-height:1;color:#fff;white-space:nowrap;}
+  .desktop-fix-s15-pie .label-55{left:49%;top:49%;transform:translate(-50%,-50%);font-size:2.25vw;}
+  .desktop-fix-s15-pie .label-27{left:73%;top:51%;transform:translate(-50%,-50%);}
+  .desktop-fix-s15-pie .label-18{left:30%;top:24%;transform:translate(-50%,-50%);color:#fff;}
+}
+</style>
+<meta content="Desktop fidelity for media-heavy PPTX decks uses PPTX-derived slide renders as baseline; semantic/live layers remain separate for editor hooks and mobile responsive layouts." name="saas-learning"/>
+<style id="desktop-fidelity-v6-polish">
+@media (min-width:861px), (orientation:landscape){
+  /* v6 polish: remove visible/debug artifacts and keep slide render unobstructed. */
+  body::after{display:none!important;content:none!important;height:0!important;}
+  .pager{display:none!important;}
+  .stage.fidelity.desktop-only{overflow:hidden!important;}
+  .stage.fidelity.desktop-only .desktop-footer,
+  .stage.fidelity.desktop-only .desktop-s13-clean{font-family:"Helvetica Neue", Helvetica, Arial, sans-serif!important;line-height:1.2!important;}
+
+  /* Safe footer reconstruction for slides whose raster footer was captured too low. */
+  .stage.fidelity.desktop-only .desktop-footer{position:absolute;left:0;right:0;bottom:0;height:10.9%;z-index:20;background:#000;color:#fff;pointer-events:none;}
+  .stage.fidelity.desktop-only .desktop-footer .patent{position:absolute;left:.45%;bottom:18%;font-size:.82vw;line-height:1.1;font-weight:400;color:#fff;white-space:nowrap;letter-spacing:0;}
+  .stage.fidelity.desktop-only .desktop-footer .copy{position:absolute;left:8%;right:8%;bottom:17%;font-size:1.13vw;line-height:1.22;font-weight:400;color:#fff;text-align:center;letter-spacing:-.012em;white-space:normal;}
+  .stage.fidelity.desktop-only .desktop-footer .page{position:absolute;right:.8%;bottom:15%;font-size:1.16vw;line-height:1;font-weight:400;color:#fff;opacity:.95;}
+
+  .s3 .stage.fidelity.desktop-only .desktop-footer{height:15.2%;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.82) 22%,#000 100%);} 
+  .s3 .stage.fidelity.desktop-only .desktop-footer .copy{left:.45%;right:3.5%;bottom:12%;font-size:1.22vw;line-height:1.24;text-align:left;}
+  .s3 .stage.fidelity.desktop-only .desktop-footer .page{right:.85%;bottom:10%;font-size:1.16vw;}
+
+  .s4 .stage.fidelity.desktop-only .desktop-footer .copy{font-size:1.03vw;line-height:1.18;left:7.8%;right:7.8%;bottom:16%;}
+
+  /* Slide 13 cleanup: hide the source-image logo/text collisions at the bottom of cards
+     and redraw only the final bullets. */
+  .s13 .stage.fidelity.desktop-only .desktop-s13-clean{position:absolute;inset:0;z-index:22;pointer-events:none;color:#4e5256;}
+  .s13 .stage.fidelity.desktop-only .desktop-s13-clean .wipe{position:absolute;background:#fff;}
+  .s13 .stage.fidelity.desktop-only .desktop-s13-clean .wipe.mid{left:36.8%;top:70.7%;width:27.8%;height:18.2%;}
+  .s13 .stage.fidelity.desktop-only .desktop-s13-clean .wipe.right{left:67.1%;top:70.7%;width:28.2%;height:18.2%;}
+  .s13 .stage.fidelity.desktop-only .desktop-s13-clean .bullet{position:absolute;font-size:1.55vw;line-height:1.18;font-weight:400;letter-spacing:-.015em;color:#4e5256;}
+  .s13 .stage.fidelity.desktop-only .desktop-s13-clean .bullet::before{content:'▪';position:absolute;left:-1.55vw;top:.04em;font-size:1.2vw;color:#4e5256;}
+  .s13 .stage.fidelity.desktop-only .desktop-s13-clean .bullet.mid{left:39.25%;top:73.7%;width:20.5%;}
+  .s13 .stage.fidelity.desktop-only .desktop-s13-clean .bullet.right{left:70.15%;top:74.0%;width:22.0%;}
+}
+</style>
+<meta content="Desktop fidelity correction: preserve deck-rendered bold/weight hierarchy by replacing low-fidelity reconstructed desktop layers with authoritative 16:9 cropped deck renders for slides with rich footer/highlight typography; do not shrink or flatten mixed-weight footer runs." name="saas-learning-v7"/><style id="desktop-fidelity-v7-bold-weight-patch">
+@media (min-width:861px), (orientation:landscape){
+  /* v7: authoritative deck-image slides include their own bold/weight hierarchy. */
+  .desktop-footer,.desktop-s13-clean,.desktop-fix-s15-pie{display:none!important;}
+  .stage.fidelity.desktop-only .desktop-art{image-rendering:auto!important;}
+}
+</style>
+<style id="desktop-fidelity-v10-helvetica-neue-pass">
+/* v10 source deck typography pass
+   - The source PPTX uses Helvetica Neue / Helvetica Neue Medium / Helvetica Neue Light.
+   - All live HTML text, mobile responsive panels, editor hooks, reconstructed footers,
+     tables, charts and labels inherit this single token.
+   - Desktop raster art remains untouched so source-deck layout and embedded bold runs stay pixel faithful.
+*/
+:root{--font:"Helvetica Neue", Helvetica, Arial, sans-serif!important;}
+html,body,.deck,.slide,.stage,.mobile,.pager,
+.mobile *,.stage *,.pager *{
+  font-family:var(--font)!important;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  font-kerning:normal;
+}
+/* Normalize live-text weights to the deck's Helvetica Neue hierarchy. */
+.m-title,.desktop-title,h1,h2,h3,.metric,.big-metric,.amount,.desktop-fix-s15-pie .pie-slice-label{font-weight:700!important;}
+.m-kicker,.desktop-kicker,.m-top,.pill,.m-chip,.m-card b,.m-price b,strong{font-weight:700!important;}
+.m-sub,.m-card p,.m-price p,.desktop-sub,.small-note,p,li,td,th{font-weight:400;}
+/* Keep mobile headline tracking close to the source deck while avoiding Arial-style over-tightness. */
+@media (max-width:860px) and (orientation:portrait){
+  .mobile{font-family:var(--font)!important;}
+  .m-title{letter-spacing:-.062em;}
+  .m-title.small{letter-spacing:-.052em;}
+  .m-sub{letter-spacing:-.025em;}
+  .m-card h3{letter-spacing:-.032em;}
+}
+@media (min-width:861px), (orientation:landscape){
+  .stage.fidelity.desktop-only .desktop-art{image-rendering:auto!important;}
+  .stage.fidelity.desktop-only .desktop-footer,
+  .stage.fidelity.desktop-only .desktop-s13-clean,
+  .stage.fidelity.desktop-only .desktop-fix-s15-pie{font-family:var(--font)!important;}
+}
+</style>
+<meta content="Typography and render selection must be derived from the deck, not guessed globally. Detect source font family/weight/size/run-level emphasis; preserve mixed bold spans and active footer terms. When PPT/PDF renders drift, use the approved deck-matched raster for desktop while keeping mobile semantic." name="saas-learning-v10"/>
+<style id="desktop-fidelity-v10-restore-v7-authoritative-slides">
+/* v10: restore the approved v7 desktop fidelity frames/footers for slides 3–8, 13 and 15.
+   These slides use deck-matched raster layers because the PPTX-to-PDF export can select
+   wrong video/poster frames, cut bottom footer copy, or lose mixed bold runs.
+   Other desktop slides remain on the source-deck render layer. Mobile remains isolated. */
+@media (min-width:861px), (orientation:landscape){
+  html,body{background:#000!important;}
+  .stage.fidelity.desktop-only{
+    width:min(100vw,177.77777778vh)!important;
+    height:min(56.25vw,100vh)!important;
+    left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;
+    background:#000!important;box-shadow:none!important;border:0!important;overflow:hidden!important;
+  }
+  .stage.fidelity.desktop-only .desktop-art{
+    width:100%!important;height:100%!important;object-fit:fill!important;display:block!important;
+    image-rendering:auto!important;background:#000!important;
+  }
+}
+</style>
+<meta content="Deck conversion must validate both typography and render-frame fidelity per slide. If source export changes a video/poster frame, cuts footer copy, or drops rich text emphasis, use the approved deck-matched desktop raster; never overwrite those corrected rasters during later typography passes. Font family alone is insufficient: preserve size, weight, line-height, letter spacing, opacity, and mixed inline bold runs." name="saas-learning-v10"/>
+<style>
+
+/* v11 desktop typography normalization -------------------------------------
+   Do not rely on mixed PPTX image renders for text. Native text overlays use
+   the source-deck type run family: Helvetica Neue / Light / Medium. */
+@media (min-width:861px), (orientation:landscape){
+  .stage, .stage *{
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:geometricPrecision;
+  }
+  .desktop-type-overlay-v11{position:absolute;inset:0;z-index:5;pointer-events:none;font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;color:#fff;line-height:1.06;}
+  .desktop-type-overlay-v11 .hn-light{font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;font-weight:300;}
+  .desktop-type-overlay-v11 .hn-reg{font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;font-weight:400;}
+  .desktop-type-overlay-v11 .hn-med{font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;font-weight:600;}
+  .desktop-type-overlay-v11 .hn-bold{font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;font-weight:700;}
+
+  /* Slide 2 was the outlier: it came from a PPTX fallback-rendered text layer.
+     This overlay pins the source deck's Helvetica Neue typography back onto the desktop render. */
+  .s2 .s2-typefix-title{position:absolute;left:0;right:0;top:12.6%;text-align:center;text-transform:uppercase;letter-spacing:.145em;font-size:34px;font-weight:400;color:#fff;line-height:1.05;}
+  .s2 .s2-typefix-card{position:absolute;top:59.65%;width:21.77%;height:35.7%;background:rgba(0,0,0,.48);border:1px solid rgba(0,0,0,.95);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;color:#fff;}
+  .s2 .s2-typefix-card.c1{left:5.50%;}.s2 .s2-typefix-card.c2{left:28.36%;}.s2 .s2-typefix-card.c3{left:51.22%;}.s2 .s2-typefix-card.c4{left:74.10%;}
+  .s2 .s2-typefix-icon{width:82px;height:82px;margin-top:74px;margin-bottom:78px;opacity:.98;}
+  .s2 .s2-typefix-icon svg{width:100%;height:100%;stroke:#fff;fill:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;}
+  .s2 .s2-typefix-label{font-size:30px;font-weight:300;line-height:1.12;letter-spacing:-.01em;max-width:92%;}
+}
+</style><style id="desktop-fidelity-v12-raster-only-guard">
+/* v12: desktop fidelity guard. Desktop must show one authoritative 16:9 slide raster only.
+   No native text repair overlays are allowed on desktop because they create duplicate title/card text.
+   Mobile semantic panels remain independent. */
+@media (min-width:861px), (orientation:landscape){
+  .stage.fidelity.desktop-only .desktop-type-overlay-v11,
+  .stage.fidelity.desktop-only [data-type-source],
+  .stage.fidelity.desktop-only .s2-typefix-title,
+  .stage.fidelity.desktop-only .s2-typefix-card{display:none!important;visibility:hidden!important;}
+  .stage.fidelity.desktop-only .desktop-art{display:block!important;width:100%!important;height:100%!important;object-fit:fill!important;}
+}
+</style><meta content="Desktop fidelity validation must detect duplicate render layers. If a slide has an authoritative raster, do not add native text overlays on top; overlays must be opt-in only after masking/removing baked text. Run a per-slide duplicate-text check before release." name="saas-learning-v12"/><meta content="Slide 12 lease/pricing slide must preserve mixed-weight title runs and bold table amount cells. Do not normalize all text to regular weight; extract inline bold spans and per-cell font weights from the source deck." name="saas-learning-v17"/>
+<style id="desktop-snap-scroll">
+/* === Desktop snap scrolling (added by Claude on 2026-05-29 for investor link) === */
+/* The #deck container is already scrollable; we add CSS snap behavior so mouse/trackpad
+   scrolling snaps cleanly slide-to-slide without needing the arrow buttons. */
+#deck {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  /* Ensure no scrollbar-induced jank during snap */
+  scrollbar-width: thin;
+}
+#deck .slide {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  #deck { scroll-behavior: auto; }
+}
+</style>
+
+<style id="ceevue-mobile-fixes">
+/* === CEEVUE mobile layout fixes (added by Claude on 2026-05-29) ===
+   Fixes: text overlap, logo positioning, scroll padding.
+   These are mobile-only — desktop layout is unchanged. */
+@media (max-width: 860px), (orientation: portrait) {
+
+  /* Make the mobile container a proper flow column, not a stack of competing absolutes */
+  .mobile {
+    padding-top: calc(env(safe-area-inset-top, 0px) + 14px);
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 24px);
+    padding-left: 20px;
+    padding-right: 20px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Top header (CEEVUE wordmark + slide counter): pin to top, not overlap */
+  .mobile .m-top {
+    flex: 0 0 auto;
+    margin-bottom: 0;
+    padding-bottom: 8px;
+  }
+
+  /* CEEVUE wordmark left-aligned and visible */
+  .mobile .m-top span:first-child {
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.95);
+    font-size: 13px;
+  }
+  .mobile.light .m-top span:first-child { color: #111; }
+
+  /* Slide counter right side */
+  .mobile .m-top span:last-child {
+    color: rgba(255,255,255,0.55);
+    font-size: 13px;
+  }
+
+  /* Main content area: normal flow, no fighting with absolute positioning */
+  .mobile .m-content,
+  .mobile .m-content.top,
+  .mobile .m-content.bottom {
+    margin-top: 24px !important;
+    margin-bottom: 24px !important;
+    position: relative !important;
+    z-index: 2;
+  }
+
+  /* Kicker (small blue text above titles): clean spacing */
+  .mobile .m-kicker {
+    margin: 0 0 14px 0 !important;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Title: never overlap with following elements */
+  .mobile .m-title {
+    position: relative !important;
+    z-index: 2;
+    margin: 0 0 18px 0 !important;
+    /* Reduce font-size slightly on phone so it fits without crashing into cards */
+    font-size: clamp(28px, 9.5vw, 46px) !important;
+  }
+  .mobile .m-title.small {
+    font-size: clamp(26px, 8.6vw, 42px) !important;
+  }
+
+  /* Subtitle / body text under title */
+  .mobile .m-sub {
+    position: relative;
+    z-index: 2;
+    margin-top: 14px;
+  }
+
+  /* Card grid: stack cleanly below title with proper spacing */
+  .mobile .m-card-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 20px !important;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Each card: solid enough background to show over video, readable text */
+  .mobile .m-card {
+    background: rgba(20,22,26,0.85) !important;
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 14px 16px;
+    border-radius: 8px;
+  }
+
+  /* Background video: default treatment for slides 9+ (unchanged dark look) */
+  .mobile .m-bg {
+    filter: brightness(0.35) !important;
+  }
+  .mobile .m-bg.blur {
+    filter: brightness(0.30) blur(6px) !important;
+  }
+  .mobile .m-bg.soft {
+    filter: brightness(0.45) !important;
+  }
+  /* Overlay gradient: default (slides 9+) */
+  .mobile .m-bg-overlay {
+    background: linear-gradient(180deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.55) 35%, rgba(0,0,0,0.92) 100%) !important;
+  }
+
+  /* ===== Mobile overlay v18b: per-slide show-through (slides 1-8) ===== */
+  /* Slides 1-3 = Option A (desktop-style): dark top behind headline, video
+     clearly visible through middle/bottom. Drop blur so video reads sharp. */
+  .slide.s1 .mobile .m-bg,
+  .slide.s2 .mobile .m-bg,
+  .slide.s3 .mobile .m-bg {
+    filter: brightness(0.78) !important;
+    transform: none !important;
+  }
+  .slide.s1 .mobile .m-bg-overlay,
+  .slide.s2 .mobile .m-bg-overlay,
+  .slide.s3 .mobile .m-bg-overlay {
+    background: linear-gradient(180deg,
+      rgba(0,0,0,0.82) 0%,
+      rgba(0,0,0,0.76) 8%,
+      rgba(0,0,0,0.69) 15%,
+      rgba(0,0,0,0.61) 22%,
+      rgba(0,0,0,0.52) 29%,
+      rgba(0,0,0,0.43) 36%,
+      rgba(0,0,0,0.34) 43%,
+      rgba(0,0,0,0.26) 50%,
+      rgba(0,0,0,0.19) 57%,
+      rgba(0,0,0,0.13) 64%,
+      rgba(0,0,0,0.09) 71%,
+      rgba(0,0,0,0.08) 78%,
+      rgba(0,0,0,0.12) 86%,
+      rgba(0,0,0,0.20) 93%,
+      rgba(0,0,0,0.30) 100%) !important;
+  }
+
+  /* Slides 4-8 = Option B: lighter overlay so background video is visible,
+     text stays pinned at top where the gradient is darkest. */
+  .slide.s4 .mobile .m-bg,
+  .slide.s5 .mobile .m-bg,
+  .slide.s6 .mobile .m-bg,
+  .slide.s7 .mobile .m-bg,
+  .slide.s8 .mobile .m-bg {
+    filter: brightness(0.85) !important;
+  }
+  .slide.s4 .mobile .m-bg-overlay,
+  .slide.s5 .mobile .m-bg-overlay,
+  .slide.s6 .mobile .m-bg-overlay,
+  .slide.s7 .mobile .m-bg-overlay,
+  .slide.s8 .mobile .m-bg-overlay {
+    background: linear-gradient(180deg,
+      rgba(0,0,0,0.72) 0%,
+      rgba(0,0,0,0.62) 12%,
+      rgba(0,0,0,0.52) 22%,
+      rgba(0,0,0,0.44) 32%,
+      rgba(0,0,0,0.38) 44%,
+      rgba(0,0,0,0.32) 56%,
+      rgba(0,0,0,0.30) 66%,
+      rgba(0,0,0,0.36) 80%,
+      rgba(0,0,0,0.46) 92%,
+      rgba(0,0,0,0.55) 100%) !important;
+  }
+
+  /* ===== Slide 2 (THE PROBLEM): 2x2 frosted cards in lower half so the
+     boardroom image stays visible up top, mirroring the desktop layout. ===== */
+  .slide.s2 .mobile .m-content.top {
+    margin-top: 4vh !important;
+    margin-bottom: 0 !important;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  /* Title block stays at top; spacer pushes the cards into the lower half */
+  .slide.s2 .mobile .m-card-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+    margin-top: auto !important;   /* shove the grid down to the lower half */
+    margin-bottom: 2vh !important;
+    position: relative;
+    z-index: 2;
+  }
+  .slide.s2 .mobile .m-card {
+    aspect-ratio: 1 / 1;           /* square boxes */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 14px !important;
+    background: rgba(18,20,24,0.42) !important;   /* frosted: image faintly shows */
+    -webkit-backdrop-filter: blur(8px) saturate(115%);
+    backdrop-filter: blur(8px) saturate(115%);
+    border: 1px solid rgba(255,255,255,0.16) !important;
+    border-radius: 14px;
+  }
+  .slide.s2 .mobile .m-card h3 {
+    font-size: 18px !important;
+    line-height: 1.05;
+    margin: 0 0 6px !important;
+  }
+  .slide.s2 .mobile .m-card p {
+    font-size: 13.5px !important;
+    line-height: 1.2;
+    color: #d6d9dd !important;
+  }
+
+  /* ===== V20 fixes ===== */
+  /* 1) The .m-content::before radial backdrop ends abruptly at the bottom of
+     the text block, creating a hard rectangular edge on slides 1-8. The main
+     .m-bg-overlay already keeps text legible there, so disable this box so the
+     fade reads as one smooth gradient with no cut. */
+  .slide.s1 .mobile .m-content.top::before,
+  .slide.s1 .mobile .m-content.bottom::before,
+  .slide.s2 .mobile .m-content.top::before,
+  .slide.s2 .mobile .m-content.bottom::before,
+  .slide.s3 .mobile .m-content.top::before,
+  .slide.s3 .mobile .m-content.bottom::before,
+  .slide.s4 .mobile .m-content.top::before,
+  .slide.s4 .mobile .m-content.bottom::before,
+  .slide.s5 .mobile .m-content.top::before,
+  .slide.s5 .mobile .m-content.bottom::before,
+  .slide.s6 .mobile .m-content.top::before,
+  .slide.s6 .mobile .m-content.bottom::before,
+  .slide.s7 .mobile .m-content.top::before,
+  .slide.s7 .mobile .m-content.bottom::before,
+  .slide.s8 .mobile .m-content.top::before,
+  .slide.s8 .mobile .m-content.bottom::before {
+    display: none !important;
+  }
+
+  /* 2) Slide 2: brighten the static boardroom image so it isn't muddy. */
+  .slide.s2 .mobile .m-bg {
+    filter: brightness(0.96) !important;
+  }
+
+  /* 3) Slide 2 only: shorter, lighter top gradient so the image shows higher
+     up the screen (the cards at the bottom carry their own frosted backdrop). */
+  .slide.s2 .mobile .m-bg-overlay {
+    background: linear-gradient(180deg,
+      rgba(0,0,0,0.74) 0%,
+      rgba(0,0,0,0.62) 7%,
+      rgba(0,0,0,0.48) 14%,
+      rgba(0,0,0,0.33) 21%,
+      rgba(0,0,0,0.20) 28%,
+      rgba(0,0,0,0.10) 35%,
+      rgba(0,0,0,0.04) 43%,
+      rgba(0,0,0,0.00) 52%,
+      rgba(0,0,0,0.00) 70%,
+      rgba(0,0,0,0.06) 82%,
+      rgba(0,0,0,0.14) 92%,
+      rgba(0,0,0,0.22) 100%) !important;
+  }
+
+  /* ===== V21 fixes ===== */
+  /* The .m-content::before radial backdrop is meant to darken behind text on
+     photo/dark slides. On the LIGHT (white) content slides it shows up as an
+     unwanted gray smudge/gradient. Disable it on every light mobile slide. */
+  .mobile.light .m-content.top::before,
+  .mobile.light .m-content.bottom::before {
+    display: none !important;
+  }
+
+  /* Blue is not a Ceevue brand color. The --blue/--cyan/--accent tokens are now
+     neutral (#111). Restore label hierarchy without blue: kickers and small
+     accent labels become mid-gray on light slides, light-gray on dark slides. */
+  .mobile.light .m-kicker,
+  .mobile.light .m-timeline .step b,
+  .mobile.light .m-price b,
+  .mobile.light .s16-h {
+    color: #6f6f6f !important;
+  }
+  .mobile:not(.light) .m-kicker,
+  .mobile:not(.light) .m-timeline .step b {
+    color: rgba(255,255,255,0.62) !important;
+  }
+  /* Big metric numbers, pricing amounts, and the .blue helper:
+     Option A mid-gray gradient (#777 -> #444) as a clipped text fill on light
+     slides; light-gray gradient (#fff -> #bbb) on dark slides for contrast. */
+  .mobile.light .m-card .metric,
+  .mobile.light .m-price .amount,
+  .mobile.light .m-title .blue,
+  .mobile.light .blue {
+    background: linear-gradient(180deg,#777 0%,#444 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+  }
+  .mobile:not(.light) .m-card .metric,
+  .mobile:not(.light) .m-price .amount,
+  .mobile:not(.light) .m-title .blue,
+  .mobile:not(.light) .blue {
+    background: linear-gradient(180deg,#ffffff 0%,#bbbbbb 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+  }
+  /* Timeline left-border + issue ring: neutral grays instead of cyan */
+  .mobile .m-timeline .step {
+    border-left-color: #6f6f6f !important;
+  }
+  .mobile:not(.light) .m-timeline .step {
+    border-left-color: rgba(255,255,255,0.7) !important;
+  }
+  .mobile .m-issue .num-round {
+    border-color: #6f6f6f !important;
+    color: #4a4a4a !important;
+  }
+  .mobile:not(.light) .m-issue .num-round {
+    border-color: rgba(255,255,255,0.7) !important;
+    color: #fff !important;
+  }
+  /* Revenue chart bars: Option A mid-gray gradient (was blue) */
+  .s16-fill {
+    background: linear-gradient(180deg,#777 0%,#444 100%) !important;
+  }
+  .s16-fill.alt {
+    background: linear-gradient(180deg,#9a9a9a 0%,#5a5a5a 100%) !important;
+  }
+}
+</style>
+
+<style id="ceevue-slide9-video-panels">
+/* Slide 9 split into 4 full-bleed video panels — same structure on
+   desktop and mobile. Each .s9v is a normal deck slide, so it snaps
+   natively with no nested scroller. Video fills the slide; copy sits
+   bottom-left over a dark gradient. A per-panel color gradient shows
+   when the video is missing/loading, so it never looks broken. */
+.s9v { background:#000; overflow:hidden; }
+.s9v .stage, .s9v .desktop-art { display:none !important; }
+.s9v-bg-wrap { position:absolute; inset:0; z-index:0; overflow:hidden; }
+.s9v-bg {
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; z-index:1; background:#000;
+}
+/* Per-panel color gradient — sits UNDER the video, becomes the visible
+   placeholder when the video hasn't loaded (transparent areas / poster). */
+.s9v-grad { position:absolute; inset:0; z-index:0; }
+.s9v-grad.g1{ background:linear-gradient(160deg,#262626 0%,#0d0d0d 100%); }
+.s9v-grad.g2{ background:linear-gradient(160deg,#2b2b2b 0%,#0d0d0d 100%); }
+.s9v-grad.g3{ background:linear-gradient(160deg,#303030 0%,#0d0d0d 100%); }
+.s9v-grad.g4{ background:linear-gradient(160deg,#242424 0%,#0d0d0d 100%); }
+/* Legibility overlay over the video */
+.s9v-overlay {
+  position:absolute; inset:0; z-index:2;
+  background:linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.15) 45%, rgba(0,0,0,0.82) 100%);
+}
+/* Header (logo + counter) */
+.s9v-top {
+  position:absolute; z-index:4; left:0; right:0;
+  display:flex; align-items:center; justify-content:space-between;
+  font-weight:800; letter-spacing:0.06em; text-transform:uppercase;
+  color:#fff; pointer-events:none;
+}
+.s9v-logo { height:auto; display:block; }
+.s9v-count { font-weight:800; color:rgba(255,255,255,0.62); letter-spacing:0.16em; }
+/* Copy block */
+.s9v-copy { position:absolute; z-index:4; color:#fff; }
+.s9v-copy .m-kicker {
+  color:#fff !important; text-transform:uppercase; letter-spacing:0.26em;
+  font-weight:800; margin:0 0 14px 0;
+}
+.s9v-copy .m-title {
+  color:#fff !important; font-weight:900; line-height:0.96;
+  letter-spacing:-0.055em; margin:0 0 16px 0;
+}
+.s9v-copy .m-sub { color:rgba(255,255,255,0.9) !important; margin:0; font-weight:400; }
+
+/* Desktop sizing — match deck conventions (.desktop-kicker/.desktop-title) */
+@media (min-width: 861px) and (orientation: landscape) {
+  .s9v-top { top:4.3%; left:0.3%; right:3.2%; }
+  .s9v-logo { width:19%; }
+  .s9v-count { font-size:1.05vw; }
+  .s9v-copy { left:3.2%; bottom:8%; max-width:48%; }
+  .s9v-copy .m-kicker { font-size:1.0vw; letter-spacing:0.26em; }
+  .s9v-copy .m-title { font-size:2.9vw; font-weight:800; letter-spacing:-0.04em; }
+  .s9v-copy .m-sub { font-size:1.15vw; line-height:1.24; max-width:92%; }
+}
+/* Mobile sizing */
+@media (max-width: 860px), (orientation: portrait) {
+  .s9v-top {
+    top:calc(env(safe-area-inset-top,0px) + 16px);
+    left:22px; right:22px; align-items:center;
+  }
+  .s9v-logo { width:96px; }
+  .s9v-count { font-size:12px; letter-spacing:0.1em; }
+  .s9v-copy {
+    left:22px; right:22px;
+    bottom:calc(env(safe-area-inset-bottom,0px) + 64px);
+  }
+  .s9v-copy .m-kicker { font-size:13px; color:rgba(255,255,255,0.7) !important; letter-spacing:0.22em; }
+  .s9v-copy .m-title { font-size:clamp(38px,12vw,60px); letter-spacing:-0.04em; }
+  .s9v-copy .m-sub { font-size:17px; line-height:1.4; }
+}
+</style>
+
+
+<style id="ceevue-final-fixes-v9">
+@media (max-width: 860px), (orientation: portrait) {
+
+  /* ============================================================
+     FIX 1: Slides 2 & 3 — kill the desktop-art PNG bleeding through
+     The .stage.desktop-only contains the static slide render and is
+     showing faded behind the mobile content. Hide it hard on mobile.
+     ============================================================ */
+  .slide .stage.desktop-only,
+  .slide .stage.pptx-render,
+  .slide .desktop-art,
+  section[data-slide] .stage.desktop-only,
+  section[data-slide] .desktop-art {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+
+  /* ============================================================
+     FIX 2: Revenue Model (slide 6) — make $5K/$4K/$3K and their
+     subtitle readable. The cards are black; text inside must be white.
+     ============================================================ */
+  .slide.s6 .mobile .m-price,
+  section[data-slide="6"] .mobile .m-price,
+  .slide.s6 .mobile .m-card,
+  section[data-slide="6"] .mobile .m-card {
+    background: #0a0c10 !important;
+    color: #fff !important;
+    padding: 22px 20px !important;
+  }
+  .slide.s6 .mobile .m-price .amount,
+  .slide.s6 .mobile .m-price .big-metric,
+  .slide.s6 .mobile .m-price h2,
+  .slide.s6 .mobile .m-price h3,
+  .slide.s6 .mobile .m-card .amount,
+  .slide.s6 .mobile .m-card .big-metric,
+  .slide.s6 .mobile .m-card h2,
+  .slide.s6 .mobile .m-card h3,
+  section[data-slide="6"] .mobile .m-price .amount,
+  section[data-slide="6"] .mobile .m-price .big-metric,
+  section[data-slide="6"] .mobile .m-price h2,
+  section[data-slide="6"] .mobile .m-price h3,
+  section[data-slide="6"] .mobile .m-card .amount,
+  section[data-slide="6"] .mobile .m-card .big-metric,
+  section[data-slide="6"] .mobile .m-card h2,
+  section[data-slide="6"] .mobile .m-card h3 {
+    color: #fff !important;
+    font-size: 56px !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.04em !important;
+    line-height: 1 !important;
+    margin: 0 0 8px 0 !important;
+  }
+  .slide.s6 .mobile .m-price p,
+  .slide.s6 .mobile .m-card p,
+  section[data-slide="6"] .mobile .m-price p,
+  section[data-slide="6"] .mobile .m-card p {
+    color: rgba(255,255,255,0.78) !important;
+    font-size: 15px !important;
+    margin: 0 !important;
+  }
+  /* Kicker on slide 6 cards — keep cyan but make it actually bright */
+  .slide.s6 .mobile .m-card .m-kicker,
+  .slide.s6 .mobile .m-price .m-kicker,
+  section[data-slide="6"] .mobile .m-card .m-kicker,
+  section[data-slide="6"] .mobile .m-price .m-kicker {
+    color: #6f6f6f !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* ============================================================
+     FIX 3: Light-background slides with dark cards (5, 12, 15-ish)
+     — the cyan/blue kicker on dark cards must be brighter, body
+     text inside cards must be readable.
+     ============================================================ */
+  /* Dark slides: card/price kickers neutral white. Light slides: mid-gray. */
+  .mobile:not(.light) .m-card .m-kicker,
+  .mobile:not(.light) .m-price .m-kicker,
+  .mobile:not(.light) .m-card .ci,
+  .mobile:not(.light) .m-price .ci {
+    color: rgba(255,255,255,0.75) !important;
+  }
+  .mobile.light .m-card .m-kicker,
+  .mobile.light .m-price .m-kicker,
+  .mobile.light .m-card .ci,
+  .mobile.light .m-price .ci {
+    color: #6f6f6f !important;
+  }
+  /* Body text inside dark cards on light slides */
+  .light .m-card,
+  .mobile.light .m-card {
+    background: #0a0c10 !important;
+    color: #fff !important;
+  }
+  .light .m-card p,
+  .light .m-card .m-sub,
+  .mobile.light .m-card p,
+  .mobile.light .m-card .m-sub {
+    color: rgba(255,255,255,0.78) !important;
+  }
+  .light .m-card .amount,
+  .light .m-card .big-metric,
+  .light .m-card h3,
+  .mobile.light .m-card .amount,
+  .mobile.light .m-card .big-metric,
+  .mobile.light .m-card h3 {
+    color: #fff !important;
+  }
+
+  /* ============================================================
+     FIX 4: Slide 18 (Team) — heavier overlay, headshot won't bleed
+     ============================================================ */
+  .slide.s18 .mobile .m-bg-overlay,
+  section[data-slide="18"] .mobile .m-bg-overlay {
+    background: linear-gradient(180deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.55) 30%, rgba(0,0,0,0.95) 60%) !important;
+  }
+  .slide.s18 .mobile .m-bg,
+  section[data-slide="18"] .mobile .m-bg {
+    filter: brightness(0.30) blur(3px) !important;
+  }
+
+  /* ============================================================
+     FIX 5: Slide 9 mobile panels — cyan kicker on dark gradient
+     was unreadable. Use bright cyan.
+     ============================================================ */
+  .s9-panel .m-kicker,
+  .s9-panel-inner .m-kicker {
+    color: rgba(255,255,255,0.75) !important;
+    opacity: 1 !important;
+    font-weight: 700 !important;
+  }
+}
+</style>
+<style id="ceevue-final-fixes-v10">
+@media (max-width: 860px), (orientation: portrait) {
+
+  /* ============================================================
+     V10 FIX 1: Slides 2 & 3 — headline overlapping body/cards.
+     The mobile article is an absolute flex column; the huge title
+     and the content below were colliding. Force a clean, gapped
+     flow column and let it scroll instead of stacking on top of
+     itself.
+     ============================================================ */
+  .slide.s2 .mobile,
+  .slide.s3 .mobile {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  .slide.s2 .mobile .m-content,
+  .slide.s3 .mobile .m-content,
+  .slide.s2 .mobile .m-content.top,
+  .slide.s3 .mobile .m-content.top,
+  .slide.s2 .mobile .m-content.bottom,
+  .slide.s3 .mobile .m-content.bottom {
+    margin-top: 16px !important;
+    margin-bottom: 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  /* Slide 2 only: fill the full height so the card grid's margin-top:auto
+     can shove the 2x2 boxes down to the bottom of the screen. */
+  .slide.s2 .mobile .m-content,
+  .slide.s2 .mobile .m-content.top {
+    flex: 1 1 auto !important;
+    height: 100% !important;
+    margin-bottom: 16px !important;
+  }
+  .slide.s2 .mobile .m-title,
+  .slide.s3 .mobile .m-title {
+    margin: 0 0 16px 0 !important;
+  }
+  .slide.s2 .mobile .m-sub,
+  .slide.s3 .mobile .m-sub {
+    margin: 0 !important;
+  }
+  .slide.s3 .mobile .m-card-grid {
+    margin-top: 4px !important;
+  }
+  /* Slide 2 cards: anchor the 2x2 grid to the very bottom so the boardroom
+     image (static) is fully visible above them. Overrides the shared rule. */
+  .slide.s2 .mobile .m-card-grid {
+    margin-top: auto !important;
+    margin-bottom: 0 !important;
+  }
+  /* ROOT CAUSE: the global desktop rule `.s2 h1,.s3 h1{position:absolute;
+     top:15%;text-align:center;text-transform:uppercase}` has no media
+     query, so it leaks onto mobile and floats the headline on top of the
+     body/cards. Force these headlines back into normal mobile flow. */
+  .slide.s2 .mobile h1.m-title,
+  .slide.s3 .mobile h1.m-title,
+  .slide.s2 .mobile .m-title,
+  .slide.s3 .mobile .m-title {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    text-align: left !important;
+    text-transform: none !important;
+    letter-spacing: -0.045em !important;
+    line-height: 0.96 !important;
+    font-weight: 800 !important;
+    word-spacing: normal !important;
+  }
+
+  /* ============================================================
+     V10 FIX 2: Slides 10–17 — remove all dark boxes / card
+     backgrounds. Text only, transparent containers, readable on
+     each slide's own theme (white text on dark, dark on light).
+     ============================================================ */
+  section[data-slide="10"] .mobile .m-card,
+  section[data-slide="11"] .mobile .m-card,
+  section[data-slide="12"] .mobile .m-card,
+  section[data-slide="12"] .mobile .m-price,
+  section[data-slide="13"] .mobile .m-card,
+  section[data-slide="14"] .mobile .m-card,
+  section[data-slide="14"] .mobile .step,
+  section[data-slide="15"] .mobile .m-card,
+  section[data-slide="16"] .mobile .m-card,
+  section[data-slide="17"] .mobile .m-card,
+  section[data-slide="17"] .mobile .m-mini {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-shadow: none !important;
+  }
+  /* Slide 17 logo tiles: white background so dark logos (Regus, Herman
+     Miller) are visible; logos centered, larger, balanced, vertically
+     centered within each tile. */
+  section[data-slide="17"] .mobile .m-mini {
+    background: #fff !important;
+    border-radius: 10px !important;
+    padding: 24px !important;
+    min-height: 150px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  section[data-slide="17"] .mobile .m-mini img {
+    background: transparent !important;
+    width: 80% !important;
+    max-width: 150px !important;
+    height: 64px !important;
+    object-fit: contain !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+  section[data-slide="17"] .mobile .m-mini h3 {
+    display: none !important;
+  }
+  /* Herman Miller (4th tile) is a wide horizontal lockup — let it run
+     wider and taller so it reads at a similar visual weight. */
+  section[data-slide="17"] .mobile .m-mini:nth-child(4) img {
+    width: 92% !important;
+    max-width: 190px !important;
+    height: 80px !important;
+  }
+  /* Give the now-borderless items a light divider so they don't mush together */
+  section[data-slide="10"] .mobile .m-card-grid,
+  section[data-slide="11"] .mobile .m-card-grid,
+  section[data-slide="12"] .mobile .m-pricing,
+  section[data-slide="13"] .mobile .m-card-grid,
+  section[data-slide="16"] .mobile .m-card-grid {
+    gap: 0 !important;
+  }
+  section[data-slide="10"] .mobile .m-card + .m-card,
+  section[data-slide="11"] .mobile .m-card + .m-card,
+  section[data-slide="12"] .mobile .m-price + .m-price,
+  section[data-slide="13"] .mobile .m-card + .m-card,
+  section[data-slide="16"] .mobile .m-card + .m-card {
+    border-top: 1px solid rgba(127,127,127,0.22) !important;
+    margin-top: 16px !important;
+    padding-top: 16px !important;
+  }
+  /* Dark slides (11, 17): text white */
+  section[data-slide="11"] .mobile .m-card h3,
+  section[data-slide="17"] .mobile .m-mini h3 {
+    color: #fff !important;
+  }
+  section[data-slide="11"] .mobile .m-card p {
+    color: rgba(255,255,255,0.78) !important;
+  }
+  /* Light slides (10,12,13,14,15,16): ensure dark text on the now-white bg */
+  section[data-slide="10"] .mobile.light .m-card h3,
+  section[data-slide="12"] .mobile.light .m-price b,
+  section[data-slide="13"] .mobile.light .m-card h3,
+  section[data-slide="14"] .mobile.light .step h3,
+  section[data-slide="15"] .mobile.light .m-card h3 {
+    color: #111 !important;
+  }
+  section[data-slide="10"] .mobile.light .m-card p,
+  section[data-slide="12"] .mobile.light .m-price p,
+  section[data-slide="13"] .mobile.light .m-card p,
+  section[data-slide="14"] .mobile.light .step p,
+  section[data-slide="16"] .mobile.light .m-card p {
+    color: #4a4f55 !important;
+  }
+  /* Keep the metric/amount accent visible on light slides */
+  section[data-slide="10"] .mobile.light .m-card .metric,
+  section[data-slide="12"] .mobile.light .m-price .amount {
+    color: var(--blue) !important;
+  }
+  /* Slide 14 timeline left-rule reads better than boxes */
+  section[data-slide="14"] .mobile .step {
+    border-left: 3px solid var(--cyan) !important;
+    padding-left: 14px !important;
+  }
+  section[data-slide="14"] .mobile.light .step {
+    border-left-color: var(--blue) !important;
+  }
+
+  /* ============================================================
+     V10 FIX 3: Remove slide-number counters on mobile.
+     - per-slide "N / 19" in the header (right span)
+     - the bottom floating pager pill
+     ============================================================ */
+  .mobile .m-top span:last-child { display: none !important; }
+  .pager { display: none !important; }
+
+  /* ============================================================
+     V10 FIX 4: Slide 18 — stacked founder cards, vertical,
+     scrollable. Replaces the invisible desktop circle layout.
+     ============================================================ */
+  .slide.s18 .mobile { justify-content: flex-start !important; }
+  .s18-team { margin-top: 12px !important; }
+  .s18-founders {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 22px;
+    position: relative;
+    z-index: 2;
+  }
+  .s18-founder {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.16);
+  }
+  .s18-founder:last-child { border-bottom: 0; }
+  .s18-avatar {
+    flex: 0 0 auto;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.7);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 17px;
+    letter-spacing: 0.02em;
+    background: rgba(0,0,0,0.25);
+  }
+  .s18-founder-body h3 {
+    margin: 0 0 3px 0;
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #fff;
+    line-height: 1.1;
+  }
+  .s18-founder-body p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.3;
+    color: rgba(255,255,255,0.72);
+  }
+
+  /* (all 4 panels use scroll-snap-stop:always so every panel snaps,
+     including the last — exiting to slide 10 is its own deliberate swipe) */
+
+  /* ============================================================
+     V10 FIX 6: Slides 1 & 19 — left-align the CEEVUE logo and
+     remove the small top "CEEVUE" wordmark (logo already shows it).
+     ============================================================ */
+  .slide.s1 .mobile .m-top,
+  .slide.s19 .mobile .m-top {
+    display: none !important;
+  }
+  .slide.s1 .mobile .m-content,
+  .slide.s19 .mobile .m-content {
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+  .slide.s1 .mobile .m-logo,
+  .slide.s1 .mobile .m-content > img,
+  .slide.s19 .mobile .m-content > img {
+    margin-right: auto !important;
+    align-self: flex-start !important;
+    display: block !important;
+  }
+  /* The logo PNG has ~13.5% transparent padding on its left edge, which
+     makes it look off-center. Pull it left so the visible wordmark lines
+     up with the text below. -13.5% of the rendered width. */
+  .slide.s1 .mobile .m-logo {
+    width: 62% !important;
+    margin-left: -8.4% !important;   /* 13.5% of 62% */
+  }
+  .slide.s19 .mobile .m-content > img {
+    width: 58% !important;
+    margin-left: -7.8% !important;   /* 13.5% of 58% */
+  }
+}
+</style>
+<style id="ceevue-full-info-v14">
+@media (max-width: 860px), (orientation: portrait) {
+
+  /* ---- Slide 11: competition matrix ---- */
+  .s11-matrix { display:flex; flex-direction:column; gap:0; margin-top:20px; position:relative; z-index:2; }
+  .s11-row { padding:16px 0; border-top:1px solid rgba(255,255,255,0.14); }
+  .s11-row:first-child { border-top:0; }
+  .s11-row h3 { margin:0 0 10px 0; font-size:18px; font-weight:800; letter-spacing:-0.02em; color:#fff; }
+  .s11-row ul { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:5px; }
+  .s11-row li { font-size:13.5px; line-height:1.3; color:rgba(255,255,255,0.74); }
+  .s11-row li b { color:#7c8590; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; font-size:11px; margin-right:6px; }
+  /* CEEVUE row highlighted */
+  .s11-ceevue { background:linear-gradient(180deg,#d4d7da 0%,#bfc3c7 100%); border:1px solid rgba(0,0,0,0.10); border-radius:0; padding:16px; margin-bottom:6px; }
+  .s11-ceevue h3 { color:#111; }
+  .s11-ceevue li { color:#2d2d2d; }
+  .s11-ceevue li b { color:#696969; }
+
+  /* ---- Slide 16: revenue/unit bar charts + table ---- */
+  .s16-block { margin-top:24px; position:relative; z-index:2; }
+  .s16-h { margin:0 0 12px 0; font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:0.14em; color:var(--blue); }
+  .mobile.light .s16-h { color:var(--blue); }
+  .s16-bars { display:flex; align-items:flex-end; gap:8px; height:180px; border-bottom:1.5px solid rgba(0,0,0,0.18); padding-bottom:0; }
+  .s16-bar { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; gap:6px; }
+  .s16-val { font-size:14px; font-weight:800; color:#111; letter-spacing:-0.02em; }
+  .s16-fill { width:100%; background:linear-gradient(180deg,#777,#444); border-radius:4px 4px 0 0; min-height:3px; }
+  .s16-fill.alt { background:linear-gradient(180deg,#9a9a9a,#5a5a5a); }
+  .s16-yr { font-size:12px; color:#666; margin-top:4px; }
+  /* table */
+  .s16-table { display:flex; flex-direction:column; border:1px solid rgba(0,0,0,0.12); border-radius:10px; overflow:hidden; }
+  .s16-trow { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; }
+  .s16-trow span { padding:10px 8px; font-size:13.5px; color:#222; border-top:1px solid rgba(0,0,0,0.08); text-align:right; }
+  .s16-trow span:first-child { text-align:left; font-weight:700; }
+  .s16-trow:first-child span { border-top:0; }
+  .s16-thead span { background:#f1f3f5; font-weight:800; font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:#555; }
+
+  /* ---- Slide 17: acquirer wordmark tiles ---- */
+  .s17-logos { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-top:24px; position:relative; z-index:2; }
+  .s17-logo {
+    background:#fff; color:#111; border-radius:10px; min-height:74px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:17px; font-weight:800; letter-spacing:-0.02em; text-align:center; padding:8px;
+  }
+
+  /* ---- Slide 18: headshots inside avatar circles ---- */
+  .s18-avatar { overflow:hidden; padding:0 !important; border:0 !important; background:transparent !important; }
+  .s18-avatar img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+  .s18-role { margin:2px 0 6px 0 !important; font-size:13px !important; font-weight:700 !important; color:rgba(255,255,255,0.7) !important; }
+  .s18-bio { margin:0 !important; font-size:13px !important; line-height:1.32 !important; color:rgba(255,255,255,0.68) !important; }
+  .s18-founder { align-items:flex-start !important; }
+  .s18-avatar { width:72px !important; height:72px !important; flex:0 0 72px !important; margin-top:2px; }
+}
+</style>
+</head>
+<body>
+<main class="deck" id="deck">
+<section class="slide s1" data-editor-slide="1" data-slide="1" data-title="Next Level Video Conferencing">
+<div class="stage fidelity desktop-only pptx-render" data-ar="16:9" data-editor-layer="desktop-pptx-render-v10" data-media-slot="slide-01-pptx-render"><img alt="CEEVUE source deck render slide 1" class="desktop-art" src="assets/img/img01_480d22851ff7.png"/></div>
+<article class="mobile">
+<video autoplay="" class="m-bg" loop="" muted="" playsinline="" poster="assets/img/img02_d3f86b1473c4.jpg" src="https://media.globalimaige.com/shared/ceevue/media1.mp4"></video><div class="m-bg-overlay"></div>
+<header class="m-top"><span>CEEVUE</span><span>01 / 19</span></header>
+<div class="m-content bottom">
+<img alt="CEEVUE" class="m-logo" src="assets/img/img03_171f591949d4.png" style="height:auto;width:62%;margin-bottom:28px"/>
+<p class="m-kicker ci">Next level video conferencing</p>
+<h1 class="m-title tlt">Life-size presence for remote meetings.</h1>
+<p class="m-sub ci">A 180° OLED experience that makes remote interaction feel closer to in-person.</p>
+</div>
+</article>
+</section>
+<section class="slide s2" data-editor-slide="2" data-slide="2" data-title="Transforming Box Sized Interactions">
+<div class="stage fidelity desktop-only pptx-render" data-ar="16:9" data-desktop-typefix="v11-helvetica-neue-overlay" data-editor-layer="desktop-pptx-render-v10" data-media-slot="slide-02-pptx-render"><img alt="CEEVUE source deck render slide 2" class="desktop-art" src="assets/img/img04_79f399023a83.png"/>
+
+</div>
+<article class="mobile scroll">
+<img class="m-bg" alt="" src="assets/img/img05_ed6780e33c82.jpg"/><div class="m-bg-overlay"></div>
+<header class="m-top"><span>CEEVUE</span><span>02 / 19</span></header>
+<div class="m-content top">
+<p class="m-kicker ci">The problem</p>
+<h1 class="m-title small tlt">Today’s video calls still feel boxed in.</h1>
+<div class="m-card-grid">
+<section class="m-card"><h3>Limited view</h3><p class="ci">Small display size and single camera angle flatten the room.</p></section>
+<section class="m-card"><h3>No depth</h3><p class="ci">Flat 2D screens lack life-size depth perception.</p></section>
+<section class="m-card"><h3>Inconsistent presence</h3><p class="ci">Participants appear in different dimensions, lighting and framing.</p></section>
+<section class="m-card"><h3>Lost body language</h3><p class="ci">Gesture and movement tracking are missing from standard calls.</p></section>
+</div>
+</div>
+</article>
+</section>
+<section class="slide s3" data-editor-slide="3" data-slide="3" data-title="Into Life Sized Immersive Experiences">
+<div class="stage fidelity desktop-only pptx-render" data-ar="16:9" data-desktop-fidelity-source="v7-authoritative-corrected-footer-media" data-editor-layer="desktop-v10-deck-matched-render" data-media-slot="slide-03-v10-deck-render"><img alt="CEEVUE deck-matched desktop render slide 3 — v7 footer/media fidelity restored in v10" class="desktop-art" src="assets/img/img06_9e6d2e041a08.png"/></div>
+<article class="mobile">
+<video autoplay="" class="m-bg blur" loop="" muted="" playsinline="" poster="assets/img/img05_ed6780e33c82.jpg" src="https://media.globalimaige.com/shared/ceevue/media2.mp4"></video><div class="m-bg-overlay"></div>
+<header class="m-top"><span>CEEVUE</span><span>03 / 19</span></header>
+<div class="m-content bottom">
+<p class="m-kicker ci">The shift</p>
+<h1 class="m-title tlt">From box-sized calls to life-sized immersion.</h1>
+<p class="m-sub ci">A retractable 180° OLED screen, embedded cameras, focal sound, studio lighting and 3D spatial tech make remote presence feel physical.</p>
+</div>
+</article>
+</section>
+<section class="slide s4 feature" data-editor-slide="4" data-slide="4" data-title="Retractable 180 OLED Screen">
+<div class="stage fidelity desktop-only pptx-render" data-ar="16:9" data-desktop-fidelity-source="v7-authoritative-corrected-footer-media" data-editor-layer="desktop-v10-deck-matched-render" data-media-slot="slide-04-v10-deck-render"><img alt="CEEVUE deck-matched desktop render slide 4 — v7 footer/media fidelity restored in v10" class="desktop-art" src="assets/img/img07_faa31db876cb.png"/></div>
+<article class="mobile">
+<video autoplay="" class="m-bg soft" loop="" muted="" playsinline="" poster="assets/img/img08_2297d898edbb.jpg" src="https://media.globalimaige.com/shared/ceevue/media3.mp4"></video><div class="m-bg-overlay"></div>
+<header class="m-top"><span>CEEVUE</span><span>04 / 19</span></header>
+<div class="m-content bottom">
+<p class="m-kicker ci">180° Surround Screen</p>
+<h1 class="m-title small tlt">A retractable OLED screen that expands the room.</h1>
+<p class="m-sub ci">Life-size 180° video creates a more natural, immersive meeting presence.</p>
+</div>
+</article>
+</section>
+<section class="slide s5 feature" data-editor-slide="5" data-slide="5" data-title="Embedded Camera Arrays">
+<div class="stage fidelity desktop-only pptx-render" data-ar="16:9" data-desktop-fidelity-source="v7-authoritative-corrected-footer-media" data-editor-layer="desktop-v10-deck-matched-render" data-media-slot="slide-05-v10-deck-render"><img alt="CEEVUE deck-matched desktop render slide 5 — v7 footer/media fidelity restored in v10" class="desktop-art" src="assets/img/img09_e8e336fb319b.png"/></div>
+<article class="mobile">
+<video autoplay="" class="m-bg soft" loop="" muted="" playsinline="" poster="assets/img/img10_9091818ac3a7.jpg" src="https://media.globalimaige.com/shared/ceevue/media4.mp4"></video><div class="m-bg-overlay"></div>
+<header class="m-top"><span>CEEVUE</span><span>05 / 19</span></header>
+<div class="m-content bottom"><p class="m-kicker ci">Embedded cameras</p><h1 class="m-title small tlt">Camera arrays that restore eye contact and body language.</h1><p class="m-sub ci">Multi-level embedded cameras track presence from more natural viewing angles.</p></div>
+</article>
+</section>
+<section class="slide s6 feature" data-editor-slide="6" data-slide="6" data-title="Focal Sound">
+<div class="stage fidelity desktop-only pptx-render" data-ar="16:9" data-desktop-fidelity-source="v7-authoritative-corrected-footer-media" data-editor-layer="desktop-v10-deck-matched-render" data-media-slot="slide-06-v10-deck-render"><img alt="CEEVUE deck-matched desktop render slide 6 — v7 footer/media fidelity restored in v10" class="desktop-art" src="assets/img/img11_72bcf867cfed.png"/></div>
+<article class="mobile">
+<video autoplay="" class="m-bg soft" loop="" muted="" playsinline="" poster="assets/img/img12_8a5cd5fb6fce.jpg" src="https://media.globalimaige.com/shared/ceevue/media5.mp4"></video><div class="m-bg-overlay"></div>
+<header class="m-top"><span>CEEVUE</span><span>06 / 19</span></header>
+<div class="m-content bottom"><p class="m-kicker ci">Focal sound</p><h1 class="m-title small tlt">Audio that feels like it comes from the people in front of you.</h1><p class="m-sub ci">Screen-aligned speakers increase clarity and spatial realism.</p></div>
+</article>
+</section>
+<section class="slide s7 feature" data-editor-slide="7" data-slide="7" data-title="Apex Studio Lighting">
+<div class="stage fidelity desktop-only pptx-render" data-ar="16:9" data-desktop-fidelity-source="v7-authoritative-corrected-footer-media" data-editor-layer="desktop-v10-deck-matched-render" data-media-slot="slide-07-v10-deck-render"><img alt="CEEVUE deck-matched desktop render slide 7 — v7 footer/media fidelity restored in v10" class="desktop-art" src="assets/img/img13_85fb6eca204e.png"/></div>
+<article class="mobile">
+<video autoplay="" class="m-bg soft" loop="" muted="" playsinline="" poster="assets/img/img14_96aaeea93408.jpg" src="https://media.globalimaige.com/shared/ceevue/media6.mp4"></video><div class="m-bg-overlay"></div>
+<header class="m-top"><span>CEEVUE</span><span>07 / 19</span></header>
+<div class="m-content bottom"><p class="m-kicker ci">Studio lighting</p><h1 class="m-title small tlt">Lighting designed for life-size communication.</h1><p class="m-sub ci">Built-in light bars help participants appear consistent, dimensional and present.</p></div>
+</article>
+</section>
+<section class="slide s8 feature" data-editor-slide="8" data-slide="8" data-title="3D Spatial Tech">
+<div class="stage fidelity desktop-only pptx-render" data-ar="16:9" data-desktop-fidelity-source="v7-authoritative-corrected-footer-media" data-editor-layer="desktop-v10-deck-matched-render" data-media-slot="slide-08-v10-deck-render"><img alt="CEEVUE deck-matched desktop render slide 8 — v7 footer/media fidelity restored in v10" class="desktop-art" src="assets/img/img15_9e3246654203.png"/></div>
+<article class="mobile">
+<video autoplay="" class="m-bg soft" loop="" muted="" playsinline="" poster="assets/img/img16_a3b3db4cbe86.jpg" src="https://media.globalimaige.com/shared/ceevue/media7.mp4"></video><div class="m-bg-overlay"></div>
+<header class="m-top"><span>CEEVUE</span><span>08 / 19</span></header>
+<div class="m-content bottom"><p class="m-kicker ci">3D spatial tech</p><h1 class="m-title small tlt">Depth mapping for real presence.</h1><p class="m-sub ci">CEEVUE maps people and surroundings so remote interactions feel less flat.</p></div>
+</article>
+</section>
+<section class="slide s9 s9v" data-editor-slide="9" data-slide="9" data-title="Beyond Meetings — Distance Learning">
+<div class="s9v-bg-wrap">
+<video class="s9v-bg" autoplay loop muted playsinline poster="assets/img/s9_poster1.jpg" src="https://media.globalimaige.com/shared/ceevue/media9.mp4"></video>
+<div class="s9v-grad g1"></div>
+<div class="s9v-overlay"></div>
+</div>
+<header class="m-top s9v-top"><img class="s9v-logo" src="assets/img/img03_171f591949d4.png" alt="CEEVUE"/><span class="s9v-count">Beyond meetings · 1 / 4</span></header>
+<div class="s9v-copy">
+<p class="m-kicker ci">Beyond meetings</p>
+<h1 class="m-title tlt">Distance learning.</h1>
+<p class="m-sub">Immersive instruction and live collaboration. Students and teachers share a single space — even when they're apart.</p>
+</div>
+</section>
+<section class="slide s9 s9v" data-editor-slide="9" data-slide="9" data-title="Beyond Meetings — Telemedicine">
+<div class="s9v-bg-wrap">
+<video class="s9v-bg" autoplay loop muted playsinline poster="assets/img/s9_poster2.jpg" src="https://media.globalimaige.com/shared/ceevue/media10.mp4"></video>
+<div class="s9v-grad g2"></div>
+<div class="s9v-overlay"></div>
+</div>
+<header class="m-top s9v-top"><img class="s9v-logo" src="assets/img/img03_171f591949d4.png" alt="CEEVUE"/><span class="s9v-count">Beyond meetings · 2 / 4</span></header>
+<div class="s9v-copy">
+<p class="m-kicker ci">Beyond meetings</p>
+<h1 class="m-title tlt">Next-gen telemedicine.</h1>
+<p class="m-sub">Life-size consults and specialist care. Patients connect with experts as if they were in the same room.</p>
+</div>
+</section>
+<section class="slide s9 s9v" data-editor-slide="9" data-slide="9" data-title="Beyond Meetings — P2P Gaming">
+<div class="s9v-bg-wrap">
+<video class="s9v-bg" autoplay loop muted playsinline poster="assets/img/s9_poster3.jpg" src="https://media.globalimaige.com/shared/ceevue/media11.mp4"></video>
+<div class="s9v-grad g3"></div>
+<div class="s9v-overlay"></div>
+</div>
+<header class="m-top s9v-top"><img class="s9v-logo" src="assets/img/img03_171f591949d4.png" alt="CEEVUE"/><span class="s9v-count">Beyond meetings · 3 / 4</span></header>
+<div class="s9v-copy">
+<p class="m-kicker ci">Beyond meetings</p>
+<h1 class="m-title tlt">P2P gaming.</h1>
+<p class="m-sub">Shared physicality for social gameplay. Stand, move, react — full-body presence in every match.</p>
+</div>
+</section>
+<section class="slide s9 s9v" data-editor-slide="9" data-slide="9" data-title="Beyond Meetings — Personalized Shopping">
+<div class="s9v-bg-wrap">
+<video class="s9v-bg" autoplay loop muted playsinline poster="assets/img/s9_poster4.jpg" src="https://media.globalimaige.com/shared/ceevue/media8.mp4"></video>
+<div class="s9v-grad g4"></div>
+<div class="s9v-overlay"></div>
+</div>
+<header class="m-top s9v-top"><img class="s9v-logo" src="assets/img/img03_171f591949d4.png" alt="CEEVUE"/><span class="s9v-count">Beyond meetings · 4 / 4</span></header>
+<div class="s9v-copy">
+<p class="m-kicker ci">Beyond meetings</p>
+<h1 class="m-title tlt">Personalized shopping.</h1>
+<p class="m-sub">Interactive retail with human presence. Try, browse, and consult with stylists from anywhere.</p>
+</div>
+</section>
+<section class="slide s10" data-editor-slide="10" data-slide="10" data-title="Market Opportunity">
+<div class="stage fidelity desktop-only pptx-render" data-ar="16:9" data-editor-layer="desktop-pptx-render-v15-slide10" data-media-slot="slide-10-pptx-render"><img alt="CEEVUE source deck render slide 10" class="desktop-art" src="assets/img/img18_0e56b3681dbb.png"/></div>
+<article class="mobile light scroll">
+<header class="m-top"><span>CEEVUE</span><span>10 / 19</span></header>
+<div class="m-content top"><p class="m-kicker ci">Market</p><h1 class="m-title small tlt">Immersive communication is expanding beyond video calls.</h1><p class="m-sub ci">CEEVUE starts with video conferencing and grows into remote communication, collaboration, AR and VR markets.</p><div class="m-card-grid">
+<section class="m-card"><div class="metric">$27B</div><h3>Video conferencing</h3></section><section class="m-card"><div class="metric">$175B</div><h3>Remote communication &amp; collaboration</h3></section><section class="m-card"><div class="metric">$286B</div><h3>AR &amp; VR</h3></section>
+</div></div>
+</article>
+</section>
+<section class="slide s11" data-editor-slide="11" data-slide="11" data-title="Competition Matrix">
+<div class="stage fidelity desktop-only pptx-render" data-ar="16:9" data-desktop-fidelity-source="user-ppt-reference-slide-11-cropped-16x9" data-editor-layer="desktop-pptx-render-v16-slide11" data-media-slot="slide-11-pptx-render-v16"><img alt="CEEVUE source deck render slide 11 — v16 competition matrix typography/logos matched" class="desktop-art" src="assets/img/img19_40d4c57d0de8.png"/></div>
+<article class="mobile scroll">
+<header class="m-top"><span>CEEVUE</span><span>11 / 19</span></header>
+<div class="m-content top"><p class="m-kicker ci">Competition</p><h1 class="m-title small tlt">CEEVUE combines what others split apart.</h1><p class="m-sub ci">No competitor matches our blend of life-size surround screen, spatial mapping, camera tracking, sound, lighting and AI.</p>
+<div class="s11-matrix">
+<section class="s11-row s11-ceevue">
+<h3>CEEVUE</h3>
+<ul>
+<li><b>Screen</b> Life-size 180° surround</li>
+<li><b>Spatial</b> 3D mapping of real self &amp; surroundings</li>
+<li><b>Cameras</b> Multi-level embedded with tracking</li>
+<li><b>Sound &amp; light</b> Screen + speaker sound, studio lighting</li>
+<li><b>AI</b> Avatar, prompter &amp; screen holographs</li>
+</ul>
+</section>
+<section class="s11-row">
+<h3>Google Project Starline</h3>
+<ul><li><b>Screen</b> Limited flat screen</li><li><b>Spatial</b> 3D map flat background</li><li><b>Cameras</b> Single fixed camera</li><li><b>Sound &amp; light</b> Unidirectional sound bar</li><li><b>AI</b> Notetaker only</li></ul>
+</section>
+<section class="s11-row">
+<h3>Webex by Cisco</h3>
+<ul><li><b>Screen</b> Limited flat screen</li><li><b>Spatial</b> 2D flat projection</li><li><b>Cameras</b> Movable single camera</li><li><b>Sound &amp; light</b> External speaker</li><li><b>AI</b> Notetaker only</li></ul>
+</section>
+<section class="s11-row">
+<h3>Avaya Room System</h3>
+<ul><li><b>Screen</b> Limited flat screen</li><li><b>Spatial</b> 2D flat projection</li><li><b>Cameras</b> Movable single camera</li><li><b>Sound &amp; light</b> External speaker</li><li><b>AI</b> Notetaker only</li></ul>
+</section>
+<section class="s11-row">
+<h3>Huawei Telepresence</h3>
+<ul><li><b>Screen</b> Limited flat screen</li><li><b>Spatial</b> 2D flat projection</li><li><b>Cameras</b> Fixed external camera</li><li><b>Sound &amp; light</b> External speaker</li><li><b>AI</b> Notetaker only</li></ul>
+</section>
+<section class="s11-row">
+<h3>Apple Vision Pro</h3>
+<ul><li><b>Screen</b> Wearable 360°</li><li><b>Spatial</b> 3D avatar projection</li><li><b>Cameras</b> Embedded lens camera</li><li><b>Sound &amp; light</b> Headphones</li><li><b>AI</b> NA</li></ul>
+</section>
+<section class="s11-row">
+<h3>Meta Quest</h3>
+<ul><li><b>Screen</b> Wearable 360°</li><li><b>Spatial</b> 3D avatar projection</li><li><b>Cameras</b> External wearable camera</li><li><b>Sound &amp; light</b> Headphones</li><li><b>AI</b> NA</li></ul>
+</section>
+<section class="s11-row">
+<h3>Microsoft HoloLens</h3>
+<ul><li><b>Screen</b> Wearable flat screen</li><li><b>Spatial</b> 2D holographic lens</li><li><b>Cameras</b> Embedded lens camera</li><li><b>Sound &amp; light</b> Headphones</li><li><b>AI</b> Copilot screen holograph</li></ul>
+</section>
+<section class="s11-row">
+<h3>Holoconnects</h3>
+<ul><li><b>Screen</b> Holograph box</li><li><b>Spatial</b> 3D limited box</li><li><b>Cameras</b> External camera</li><li><b>Sound &amp; light</b> External speaker</li><li><b>AI</b> NA</li></ul>
+</section>
+</div>
+</div>
+</article>
+</section>
+<section class="slide s12" data-editor-slide="12" data-slide="12" data-title="Revenue Model">
+<div class="stage fidelity desktop-only pptx-render" data-ar="16:9" data-editor-layer="desktop-pptx-render-v10" data-media-slot="slide-12-pptx-render"><img alt="CEEVUE source deck render slide 12" class="desktop-art" src="assets/img/img20_3e4d6cd18549.png"/></div>
+<article class="mobile light scroll">
+<header class="m-top"><span>CEEVUE</span><span>12 / 19</span></header>
+<div class="m-content top"><p class="m-kicker ci">Revenue model</p><h1 class="m-title small tlt">Leased as a pair, monetized through SaaS and AI feature unlocks.</h1><div class="m-pricing">
+<section class="m-price"><b>6 month lease</b><div class="amount">$5K</div><p>Initial setup + $4K monthly subscription</p></section>
+<section class="m-price"><b>12 month lease</b><div class="amount">$4K</div><p>Initial setup + $3K monthly subscription</p></section>
+<section class="m-price"><b>18 month lease</b><div class="amount">$3K</div><p>Initial setup + $2K monthly subscription</p></section>
+</div><p class="m-footer-note ci">Upgrade unlocks range from $100–$3,000, creating retention and premium expansion.</p></div>
+</article>
+</section>
+<section class="slide s13" data-editor-slide="13" data-slide="13" data-title="Go To Market">
+<div class="stage fidelity desktop-only pptx-render" data-ar="16:9" data-desktop-fidelity-source="v7-authoritative-corrected-footer-media" data-editor-layer="desktop-v10-deck-matched-render" data-media-slot="slide-13-v10-deck-render"><img alt="CEEVUE deck-matched desktop render slide 13 — v7 footer/media fidelity restored in v10" class="desktop-art" src="assets/img/img21_bf3f2b475e8a.png"/></div>
+<article class="mobile light scroll">
+<header class="m-top"><span>CEEVUE</span><span>13 / 19</span></header>
+<div class="m-content top"><p class="m-kicker ci">Go-to-market</p><h1 class="m-title small tlt">Validate with POCs, then scale through demo locations and channel partners.</h1><div class="m-card-grid">
+<section class="m-card"><h3>Proof of Concept</h3><p class="ci">Target enterprise and tech-savvy partners. Use successful POCs as case studies for credibility and sales.</p></section>
+<section class="m-card"><h3>Demo Locations</h3><p class="ci">Co-working spaces, exhibitions, incubators and workspace trials create visibility and feedback.</p></section>
+<section class="m-card"><h3>Channel Partners</h3><p class="ci">Office furniture brands, IT service providers and smart-home retailers extend distribution.</p></section>
+</div></div>
+</article>
+</section>
+<section class="slide s14" data-editor-slide="14" data-slide="14" data-title="Traction Timeline">
+<div class="stage fidelity desktop-only pptx-render" data-ar="16:9" data-editor-layer="desktop-pptx-render-v10" data-media-slot="slide-14-pptx-render"><img alt="CEEVUE source deck render slide 14" class="desktop-art" src="assets/img/img22_bfa10e061369.png"/></div>
+<article class="mobile light scroll">
+<header class="m-top"><span>CEEVUE</span><span>14 / 19</span></header>
+<div class="m-content top"><p class="m-kicker ci">Traction</p><h1 class="m-title small tlt">Prototype deployment and market validation through 2026.</h1><div class="m-timeline">
+<section class="step"><b>Traction</b><h3>Patents + prototype plan</h3><p>Multiple patents secured and engineering plan underway.</p></section>
+<section class="step"><b>Q2 2025</b><h3>Secure funding</h3><p>Complete seed funding for prototype and POC pilots.</p></section>
+<section class="step"><b>Q3 2025</b><h3>Finalize prototype</h3><p>Complete software, platform and AI integration.</p></section>
+<section class="step"><b>Q4 2025</b><h3>Deploy demos</h3><p>Client sites and exhibitions.</p></section>
+<section class="step"><b>Q1–Q2 2026</b><h3>Scale sales</h3><p>Channel partners and multiple deployments.</p></section>
+</div></div>
+</article>
+</section>
+<section class="slide s15" data-editor-slide="15" data-slide="15" data-title="Seed Round Raise">
+<div class="stage fidelity desktop-only pptx-render" data-ar="16:9" data-desktop-fidelity-source="v7-authoritative-corrected-footer-media" data-editor-layer="desktop-v10-deck-matched-render" data-media-slot="slide-15-v10-deck-render"><img alt="CEEVUE deck-matched desktop render slide 15 — v7 footer/media fidelity restored in v10" class="desktop-art" src="assets/img/img23_86b351026a53.png"/></div>
+<article class="mobile light scroll">
+<header class="m-top"><span>CEEVUE</span><span>15 / 19</span></header>
+<div class="m-content top"><p class="m-kicker ci">The ask</p><h1 class="m-title tlt">$10M seed.</h1><p class="m-sub ci">To complete the prototype and deploy in POC locations.</p><div class="m-card-grid two"><section class="m-card"><div class="metric">55%</div><h3>R&amp;D + manufacturing</h3></section><section class="m-card"><div class="metric">27%</div><h3>Distribution + licensing</h3></section><section class="m-card"><div class="metric">18%</div><h3>Marketing + sales</h3></section><section class="m-card"><div class="metric">$250K</div><h3>Founder investment</h3></section></div><p class="m-footer-note ci">Objectives: prototype build, 5–10 POC pilots, channel partners and scaled sales.</p></div>
+</article>
+</section>
+<section class="slide s16" data-editor-slide="16" data-slide="16" data-title="Revenue Projections">
+<div class="stage fidelity desktop-only pptx-render" data-ar="16:9" data-editor-layer="desktop-pptx-render-v10" data-media-slot="slide-16-pptx-render"><img alt="CEEVUE source deck render slide 16 — PPT faithful v19" class="desktop-art" src="assets/img/img24_d59f492b747b.png"/></div>
+<article class="mobile light scroll">
+<header class="m-top"><span>CEEVUE</span><span>16 / 19</span></header>
+<div class="m-content top"><p class="m-kicker ci">Projections</p><h1 class="m-title small tlt">From $3.5M to $170M over five years.</h1>
+<p class="m-sub ci" style="margin-bottom:6px">Focus on 6-month subscription plans and premium add-ons drives the climb from $3.5M in year one to $170M by year five.</p>
+
+<div class="s16-block">
+<h4 class="s16-h">Revenue · 5-year growth</h4>
+<div class="s16-bars">
+<div class="s16-bar"><span class="s16-val">$3M</span><div class="s16-fill" style="height:4%"></div><span class="s16-yr">2026</span></div>
+<div class="s16-bar"><span class="s16-val">$14M</span><div class="s16-fill" style="height:9%"></div><span class="s16-yr">2027</span></div>
+<div class="s16-bar"><span class="s16-val">$56M</span><div class="s16-fill" style="height:33%"></div><span class="s16-yr">2028</span></div>
+<div class="s16-bar"><span class="s16-val">$127M</span><div class="s16-fill" style="height:75%"></div><span class="s16-yr">2029</span></div>
+<div class="s16-bar"><span class="s16-val">$170M</span><div class="s16-fill" style="height:100%"></div><span class="s16-yr">2030</span></div>
+</div>
+</div>
+
+<div class="s16-block">
+<h4 class="s16-h">Unit leases · 5-year growth</h4>
+<div class="s16-bars">
+<div class="s16-bar"><span class="s16-val">60</span><div class="s16-fill alt" style="height:2%"></div><span class="s16-yr">2025</span></div>
+<div class="s16-bar"><span class="s16-val">240</span><div class="s16-fill alt" style="height:7%"></div><span class="s16-yr">2026</span></div>
+<div class="s16-bar"><span class="s16-val">960</span><div class="s16-fill alt" style="height:27%"></div><span class="s16-yr">2027</span></div>
+<div class="s16-bar"><span class="s16-val">2160</span><div class="s16-fill alt" style="height:62%"></div><span class="s16-yr">2028</span></div>
+<div class="s16-bar"><span class="s16-val">3500</span><div class="s16-fill alt" style="height:100%"></div><span class="s16-yr">2029</span></div>
+</div>
+</div>
+
+<div class="s16-block">
+<h4 class="s16-h">Revenue breakdown ($M)</h4>
+<div class="s16-table">
+<div class="s16-trow s16-thead"><span>Year</span><span>Sub.</span><span>Lease</span><span>Total</span></div>
+<div class="s16-trow"><span>2025</span><span>1.1</span><span>2.4</span><span>3.5</span></div>
+<div class="s16-trow"><span>2026</span><span>4.6</span><span>9.6</span><span>14.2</span></div>
+<div class="s16-trow"><span>2027</span><span>18.3</span><span>38.4</span><span>56.7</span></div>
+<div class="s16-trow"><span>2028</span><span>41.2</span><span>86.4</span><span>127.6</span></div>
+<div class="s16-trow"><span>2029</span><span>55.0</span><span>115.2</span><span>170.2</span></div>
+</div>
+</div>
+</div>
+</article>
+</section>
+<section class="slide s17" data-editor-slide="17" data-slide="17" data-title="Exit Strategy">
+<div class="stage fidelity desktop-only pptx-render" data-ar="16:9" data-editor-layer="desktop-pptx-render-v10" data-media-slot="slide-17-pptx-render"><img alt="CEEVUE source deck render slide 17" class="desktop-art" src="assets/img/img25_ac92057f4e4f.png"/></div>
+<article class="mobile scroll">
+<video autoplay="" class="m-bg blur" loop="" muted="" playsinline="" poster="assets/img/img26_730b7e95e33b.jpg" src="https://media.globalimaige.com/shared/ceevue/media12.mp4"></video><div class="m-bg-overlay"></div>
+<header class="m-top"><span>CEEVUE</span><span>17 / 19</span></header>
+<div class="m-content top"><p class="m-kicker ci">Exit strategy</p><h1 class="m-title small tlt">Built for acquisition by consumer electronics, OEMs or technology companies.</h1><p class="m-sub ci">Acquirers looking to expand remote communication and collaboration portfolios.</p>
+<div class="s17-logos">
+<section class="s17-logo">Samsung</section>
+<section class="s17-logo">SONY</section>
+<section class="s17-logo">HP</section>
+<section class="s17-logo">Apple</section>
+<section class="s17-logo">LG</section>
+<section class="s17-logo">Zoom</section>
+<section class="s17-logo">Meta</section>
+<section class="s17-logo">Microsoft</section>
+<section class="s17-logo">Google</section>
+</div>
+</div>
+</article>
+</section>
+<section class="slide s18" data-editor-slide="18" data-slide="18" data-title="Team">
+<div class="stage fidelity desktop-only pptx-render" data-ar="16:9" data-editor-layer="desktop-pptx-render-v10" data-media-slot="slide-18-pptx-render"><img alt="CEEVUE source deck render slide 18" class="desktop-art" src="assets/img/img31_f4b32ccb9c3a.png"/></div>
+<article class="mobile scroll">
+<img alt="team background" class="m-bg blur" src="assets/img/img32_14f93468e24d.png"/><div class="m-bg-overlay"></div>
+<header class="m-top"><span>CEEVUE</span><span></span></header>
+<div class="m-content top s18-team">
+<p class="m-kicker ci">Team</p>
+<h1 class="m-title small tlt">Inventors, technologists and advisors.</h1>
+<p class="m-sub ci">Across media, finance, physics, law and hardware.</p>
+<div class="s18-founders">
+<section class="s18-founder">
+<div class="s18-avatar" style="border-color:#555"><img src="assets/img/team_sean.png" alt="Sean Chaudhuri"/></div>
+<div class="s18-founder-body">
+<h3>Sandipan ‘Sean’ Chaudhuri</h3>
+<p class="s18-role">CEO, Co-founder</p>
+<p class="s18-bio">Leads operations and business development at Global Image Factory. Top roles at DDB, Office Depot and Gap. BS Physics, NASA Goddard, Lidar papers.</p>
+</div>
+</section>
+<section class="s18-founder">
+<div class="s18-avatar" style="border-color:#555"><img src="assets/img/team_rajit.png" alt="Rajit Chaudhuri"/></div>
+<div class="s18-founder-body">
+<h3>Satrajit ‘Rajit’ Chaudhuri</h3>
+<p class="s18-role">CCO, Co-founder</p>
+<p class="s18-bio">Leads creative operations at Global Image Factory. Former leadership at Leo Burnett, LBI, JWT and Grey. Award-winning at Cannes, NY Festivals, Webby’s, Effies.</p>
+</div>
+</section>
+<section class="s18-founder">
+<div class="s18-avatar" style="border-color:#555"><img src="assets/img/team_ed.png" alt="Edward Boyle"/></div>
+<div class="s18-founder-body">
+<h3>Edward ‘Ed’ Boyle</h3>
+<p class="s18-role">CFO, Fractional</p>
+<p class="s18-bio">20+ years in finance and tech with Apple, HP, Sony and Virgin. Fund manager at a $250B firm; at Escher Capital backed AI and VR startups. MBA, MS AI.</p>
+</div>
+</section>
+</div>
+</div>
+</article>
+</section>
+<section class="slide s19" data-editor-slide="19" data-slide="19" data-title="Contact">
+<div class="stage fidelity desktop-only pptx-render" data-ar="16:9" data-editor-layer="desktop-pptx-render-v10" data-media-slot="slide-19-pptx-render"><img alt="CEEVUE source deck render slide 19" class="desktop-art" src="assets/img/img33_085d649bbe89.png"/></div>
+<article class="mobile">
+<header class="m-top"><span>CEEVUE</span><span>19 / 19</span></header>
+<div class="m-content bottom"><img alt="CEEVUE" src="assets/img/img03_171f591949d4.png" style="width:80%;height:auto;margin-bottom:32px"/><p class="m-kicker ci">Next level video conferencing</p><h1 class="m-title small tlt">Let’s make remote interaction life-sized.</h1><p class="m-sub ci">Sean Chaudhuri<br/>sean@ceevue.com<br/>+1 (305) 927 0049</p></div>
+</article>
+</section>
+</main>
+<div aria-hidden="true" class="pager"><button id="prevBtn">‹</button><span id="pageText">1 / 19</span><button id="nextBtn">›</button></div>
+<script>
+(function(){
+  const deck=document.getElementById('deck');
+  const slides=[...document.querySelectorAll('.slide')];
+  const pageText=document.getElementById('pageText');
+  function setVh(){const vv=window.visualViewport; const h=(vv?vv.height:window.innerHeight)*0.01; document.documentElement.style.setProperty('--vvh', h+'px');}
+  setVh(); window.addEventListener('resize',setVh); if(window.visualViewport){visualViewport.addEventListener('resize',setVh);visualViewport.addEventListener('scroll',setVh)}
+  function currentIndex(){let st=deck.scrollTop, h=deck.clientHeight||window.innerHeight; return Math.max(0, Math.min(slides.length-1, Math.round(st/h)));}
+  function update(){pageText.textContent=(currentIndex()+1)+' / '+slides.length;}
+  deck.addEventListener('scroll',()=>requestAnimationFrame(update)); update();
+  function go(i){i=Math.max(0,Math.min(slides.length-1,i)); deck.scrollTo({top:i*deck.clientHeight,behavior:'smooth'});}
+  document.getElementById('prevBtn').onclick=()=>go(currentIndex()-1);
+  document.getElementById('nextBtn').onclick=()=>go(currentIndex()+1);
+  window.addEventListener('keydown',e=>{if(e.key==='ArrowDown'||e.key==='PageDown'||e.key==='ArrowRight'){go(currentIndex()+1)} if(e.key==='ArrowUp'||e.key==='PageUp'||e.key==='ArrowLeft'){go(currentIndex()-1)}});
+})();
+</script>
+
+<script id="desktop-wheel-snap">
+(function(){
+  // Don't activate on touch devices / narrow viewports (mobile already works)
+  function isDesktop(){ return window.matchMedia('(min-width: 861px)').matches; }
+  let cooldown = false;
+  function trigger(direction){
+    if (cooldown) return;
+    cooldown = true;
+    const btn = direction > 0 ? document.getElementById('nextBtn') : document.getElementById('prevBtn');
+    if (btn) btn.click();
+    // Match the smooth-scroll duration before allowing another step
+    setTimeout(() => { cooldown = false; }, 750);
+  }
+  window.addEventListener('wheel', function(e){
+    if (!isDesktop()) return;
+    // Threshold so tiny trackpad jitters don't fire
+    if (Math.abs(e.deltaY) < 8) return;
+    e.preventDefault();
+    trigger(e.deltaY > 0 ? 1 : -1);
+  }, { passive: false });
+  // Also support touchpad two-finger swipe and Page Up/Down already work via existing keydown
+})();
+</script>
+</body>
+</html>
